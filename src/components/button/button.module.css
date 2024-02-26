@@ -1,0 +1,33 @@
+.button {
+  padding: 11px 27px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  min-width: 227px;
+  color: #FFFFFF;
+  background-color: #633CFF;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.button_primary:enabled:active {
+  background-color: #BEADFF;
+  box-shadow: 0 0 32px 0 rgba(99, 60, 255, 0.25);
+}
+
+.button_secondary {
+  background-color: transparent;
+  color: #633CFF;
+  border: 1px solid #633CFF;
+}
+
+.button_secondary:enabled:active {
+  background-color: #EFEBFF;
+}
+
+.button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
