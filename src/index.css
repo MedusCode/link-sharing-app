@@ -11,4 +11,7 @@
 
 body {
   font-family: "Instrument Sans", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 }
