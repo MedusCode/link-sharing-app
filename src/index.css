@@ -15,3 +15,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-smooth: never;
 }
+
+svg #fill_exception path {
+  fill: #FFFFFF;
+}

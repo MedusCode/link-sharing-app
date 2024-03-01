@@ -58,7 +58,7 @@ const socialNetworksDropdown: TDropdownValues = [
   },
   {
     text: 'Codepen',
-    value: 'Codepen',
+    value: 'codepen',
     icon: CodepenIcon
   },
   {

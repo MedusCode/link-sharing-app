@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, SVGProps } from 'react';
 
 interface IDropdownValue {
   text: string,
   value: string,
-  icon?: FC
+  icon?: FC<SVGProps<SVGSVGElement>>
 }
 
 type TDropdownValues = IDropdownValue[];
