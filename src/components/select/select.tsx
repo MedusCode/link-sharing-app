@@ -3,7 +3,6 @@ import styles from './select.module.css';
 import { nanoid } from 'nanoid';
 import { IDropdownValue, TDropdownValues } from '../../types/dropdown-values';
 import { ReactComponent as ArrowIcon } from "../../assets/images/icon-chevron-down.svg";
-import button from '../button/button';
 
 interface ISelectProps {
   values: TDropdownValues;

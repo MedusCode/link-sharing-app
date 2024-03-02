@@ -1,3 +1,8 @@
+.selectContainer {
+  position: relative;
+  width: fit-content;
+}
+
 .button {
   box-sizing: border-box;
   display: flex;
@@ -13,8 +18,6 @@
   cursor: pointer;
   color: #333333;
   font-size: 16px;
-
-  margin: 50px 0 0 50px;
 }
 
 .button_active {
@@ -27,7 +30,11 @@
 }
 
 .button_active ~ .dropdownList {
-  height: 70vh;
+  opacity: 1;
+  left: 0;
+  top: calc(100% + 8px);
+  visibility: visible;
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.10);
 }
 
 .buttonText {
@@ -40,10 +47,13 @@
 }
 
 .dropdownList {
+  box-sizing: border-box;
+  position: absolute;
+  left: 5px;
+  top: calc(100% + 13px);
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  margin: 8px 0;
+  margin: 0;
   padding: 0;
   background-color: #FFF;
   border-radius: 8px;
@@ -52,12 +62,10 @@
   width: max-content;
   font-size: 16px;
   list-style: none;
-  height: 0;
   transition: 0.2s ease-in-out;
   overflow: scroll;
-
-
-  margin-left: 50px;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .dropdownItem {
