@@ -1,0 +1,118 @@
+.selectContainer {
+  position: relative;
+  width: fit-content;
+}
+
+.button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #FFF;
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  min-width: 480px;
+  width: max-content;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+  color: #333333;
+  font-size: 16px;
+}
+
+.button_active {
+  border: 1px solid #633CFF;
+  box-shadow: 0 0 32px 0 rgba(99, 60, 255, 0.25);
+}
+
+.button_active .arrow {
+  transform: rotate(180deg);
+}
+
+.button_active ~ .dropdownList {
+  opacity: 1;
+  left: 0;
+  top: calc(100% + 8px);
+  visibility: visible;
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.10);
+}
+
+.buttonText {
+  width: 100%;
+  background-position: 16px center;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  line-height: 150%;
+  text-align: left;
+}
+
+.dropdownList {
+  box-sizing: border-box;
+  position: absolute;
+  left: 5px;
+  top: calc(100% + 13px);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-color: #FFF;
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  min-width: 480px;
+  width: max-content;
+  font-size: 16px;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  overflow: scroll;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dropdownItem {
+  border-bottom: 1px solid #D9D9D9;
+  margin: 0 16px;
+  color: #333333;
+}
+
+.dropdownItem_selected {
+  color: #633CFF;
+}
+
+.dropdownItem_selected .icon path {
+  fill: #633CFF;
+}
+
+.dropdownItem:last-child {
+  border: none;
+}
+
+.dropdownLabel {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  margin: 0 -16px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.dropdownRadio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  opacity: 0;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.arrow {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  transition: 0.3s ease-in-out;
+}
