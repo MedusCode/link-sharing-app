@@ -1,0 +1,44 @@
+.tabsContainer {
+  display: flex;
+  gap: 16px;
+  width: fit-content;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  padding: 11px 27px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #737373;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  transition: color 0.2s ease-in-out, background-color 0.1s ease-in-out;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.tab:hover {
+  color: #633CFF;
+}
+
+.tab .icon path {
+  transition: 0.2s ease-in-out;
+}
+
+.tab:hover .icon path {
+  fill: #633CFF;
+}
+
+.tab:active {
+  background-color: #EFEBFF;
+}
+

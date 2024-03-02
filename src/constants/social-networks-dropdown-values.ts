@@ -1,4 +1,4 @@
-import { TDropdownValues } from '../types/dropdown-values';
+import IDropdownProps from '../types/dropdown-props';
 import { ReactComponent as GitHubIcon } from '../assets/images/icon-github.svg';
 import { ReactComponent as TwitterIcon } from '../assets/images/icon-twitter.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/images/icon-linkedin.svg';
@@ -15,7 +15,7 @@ import { ReactComponent as StackOverflowIcon } from '../assets/images/icon-stack
 import { ReactComponent as FrontendMentorIcon } from '../assets/images/icon-frontend-mentor.svg';
 
 
-const socialNetworksDropdown: TDropdownValues = [
+const socialNetworksDropdown: IDropdownProps[] = [
   {
     text: 'GitHub',
     value: 'github',

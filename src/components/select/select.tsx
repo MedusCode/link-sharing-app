@@ -1,11 +1,11 @@
-import { FC, useState, ChangeEvent, SVGProps, MouseEvent } from 'react';
+import { FC, useState, ChangeEvent, SVGProps, MouseEvent, ReactNode } from 'react';
 import styles from './select.module.css';
 import { nanoid } from 'nanoid';
-import { IDropdownValue, TDropdownValues } from '../../types/dropdown-values';
+import IDropdownProps from '../../types/dropdown-props';
 import { ReactComponent as ArrowIcon } from "../../assets/images/icon-chevron-down.svg";
 
 interface ISelectProps {
-  values: TDropdownValues;
+  values: IDropdownProps[];
   name: string;
   placeholder?: string;
   Icon?: FC<SVGProps<SVGSVGElement>>;
@@ -18,7 +18,7 @@ const Select: FC<ISelectProps> = ({
   Icon
 }) => {
   const listId = nanoid();
-  const [ selection, setSelection ] = useState<IDropdownValue | null>(null);
+  const [ selection, setSelection ] = useState<IDropdownProps | null>(null);
   const [ isOpened, setIsOpened ] = useState<boolean>(false);
 
   const toggleDropdown = (evt: MouseEvent<HTMLButtonElement>) => {
@@ -42,7 +42,7 @@ const Select: FC<ISelectProps> = ({
     }
   }
 
-  const generateListItems = () => {
+  const generateListItems = (): ReactNode => {
     return values.map((value => {
       const Icon = value.icon;
       const id = nanoid();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './app.module.css';
 import Button from '../button/button';
 import TextInput from '../text-input/text-input';
@@ -6,8 +6,10 @@ import linkIcon from '../../assets/images/icon-link.svg';
 import Select from '../select/select';
 import SocialNetworksDropdownValues from '../../constants/social-networks-dropdown-values';
 import { ReactComponent as LinkIcon } from "../../assets/images/icon-link.svg";
+import Tabs from '../tabs/tabs';
+import tabsValues from '../../constants/tabs';
 
-function App() {
+const App:FC = () => {
 
   return (
     <div>
@@ -20,6 +22,7 @@ function App() {
         placeholder={'Choose a social network'}
         Icon={LinkIcon}
       />
+      <Tabs values={tabsValues}/>
     </div>
   );
 }
