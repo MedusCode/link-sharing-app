@@ -5,18 +5,16 @@
 }
 
 .tab {
+  composes: headingSmallText from '../../styles/variables.css';
+  color: var(--secondary-text-color, #737373);
+  border-radius: var(--border-radius, 8px);
   display: flex;
   align-items: center;
   gap: 8px;
   border: none;
   cursor: pointer;
   padding: 11px 27px;
-  border-radius: 8px;
   background-color: transparent;
-  color: #737373;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 150%;
   transition: color 0.2s ease-in-out, background-color 0.1s ease-in-out;
 }
 
@@ -27,7 +25,7 @@
 }
 
 .tab:hover {
-  color: #633CFF;
+  color: var(--primary-color, #633CFF);
 }
 
 .tab .icon path {
@@ -35,10 +33,10 @@
 }
 
 .tab:hover .icon path {
-  fill: #633CFF;
+  fill: var(--primary-color, #633CFF);
 }
 
 .tab:active {
-  background-color: #EFEBFF;
+  background-color: var(--tertiary-color, #EFEBFF);
 }
 
