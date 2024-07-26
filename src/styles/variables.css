@@ -21,7 +21,9 @@ body {
 
   --error-color: #FF3939;
 
-  --border-radius: 8px;
+  --element-border-radius: 8px;
+  --container-border-radius: 12px;
+
   --disabled-opacity: 0.25;
 
   --font-family: "Instrument Sans", serif;
@@ -29,7 +31,7 @@ body {
 
 .headingMediumText {
   color: var(--primary-text-color, #333333);
-  font-family: var(--font-family, "Instrument Sans", serif);
+  font-family: var(--font-family, "Instrument Sans"), serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 150%;
@@ -37,7 +39,7 @@ body {
 
 .headingSmallText {
   color: var(--primary-text-color, #333333);
-  font-family: var(--font-family, "Instrument Sans", serif);
+  font-family: var(--font-family, "Instrument Sans"), serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
@@ -45,7 +47,7 @@ body {
 
 .bodyMediumText {
   color: var(--primary-text-color, #333333);
-  font-family: var(--font-family, "Instrument Sans", serif);
+  font-family: var(--font-family, "Instrument Sans"), serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 150%;
@@ -53,7 +55,7 @@ body {
 
 .bodySmallText {
   color: var(--primary-text-color, #333333);
-  font-family: var(--font-family, "Instrument Sans", serif);
+  font-family: var(--font-family, "Instrument Sans"), serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 150%;

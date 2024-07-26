@@ -1,4 +1,4 @@
-import IDropdownProps from '../types/dropdown-props';
+import ISocialNetwork from '../types/social-networks';
 import { ReactComponent as GitHubIcon } from '../assets/images/icon-github.svg';
 import { ReactComponent as TwitterIcon } from '../assets/images/icon-twitter.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/images/icon-linkedin.svg';
@@ -14,78 +14,105 @@ import { ReactComponent as HashnodeIcon } from '../assets/images/icon-hashnode.s
 import { ReactComponent as StackOverflowIcon } from '../assets/images/icon-stack-overflow.svg';
 import { ReactComponent as FrontendMentorIcon } from '../assets/images/icon-frontend-mentor.svg';
 
-
-const socialNetworksDropdown: IDropdownProps[] = [
+const socialNetworks: ISocialNetwork[] = [
   {
-    text: 'GitHub',
+    name: 'GitHub',
     value: 'github',
-    icon: GitHubIcon
+    icon: GitHubIcon,
+    color: '#1A1A1A',
+    isColorLight: false
   },
   {
-    text: 'Twitter',
+    name: 'Twitter',
     value: 'twitter',
-    icon: TwitterIcon
+    icon: TwitterIcon,
+    color: '#43B7E9',
+    isColorLight: false
   },
   {
-    text: 'LinkedIn',
+    name: 'LinkedIn',
     value: 'linkedin',
-    icon: LinkedInIcon
+    icon: LinkedInIcon,
+    color: '#2D68FF',
+    isColorLight: false
   },
   {
-    text: 'YouTube',
+    name: 'YouTube',
     value: 'youtube',
-    icon: YouTubeIcon
+    icon: YouTubeIcon,
+    color: '#EE3939',
+    isColorLight: false
   },
   {
-    text: 'Facebook',
+    name: 'Facebook',
     value: 'facebook',
-    icon: FacebookIcon
+    icon: FacebookIcon,
+    color: '#2442AC',
+    isColorLight: false
   },
   {
-    text: 'Twitch',
+    name: 'Twitch',
     value: 'twitch',
-    icon: TwitchIcon
+    icon: TwitchIcon,
+    color: '#EE3FC8',
+    isColorLight: false
   },
   {
-    text: 'Dev.to',
+    name: 'Dev.to',
     value: 'devto',
-    icon: DevToIcon
+    icon: DevToIcon,
+    color: '#333333',
+    isColorLight: false
   },
   {
-    text: 'Codewars',
+    name: 'Codewars',
     value: 'codewars',
-    icon: CodewarsIcon
+    icon: CodewarsIcon,
+    color: '#8A1A50',
+    isColorLight: false
   },
   {
-    text: 'Codepen',
+    name: 'Codepen',
     value: 'codepen',
-    icon: CodepenIcon
+    icon: CodepenIcon,
+    color: '#302267',
+    isColorLight: false
   },
   {
-    text: 'freeCodeCamp',
+    name: 'freeCodeCamp',
     value: 'freecodecamp',
-    icon: FreeCodeCampIcon
+    icon: FreeCodeCampIcon,
+    color: '#0A0A21',
+    isColorLight: false
   },
   {
-    text: 'GitLab',
+    name: 'GitLab',
     value: 'gitlab',
-    icon: GitLabIcon
+    icon: GitLabIcon,
+    color: '#EB4925',
+    isColorLight: false
   },
   {
-    text: 'Hashnode',
+    name: 'Hashnode',
     value: 'hashnode',
-    icon: HashnodeIcon
+    icon: HashnodeIcon,
+    color: '#0330D1',
+    isColorLight: false
   },
   {
-    text: 'Stack Overflow',
+    name: 'Stack Overflow',
     value: 'stackoverflow',
-    icon: StackOverflowIcon
+    icon: StackOverflowIcon,
+    color: '#EC7100',
+    isColorLight: false
   },
   {
-    text: 'Frontend Mentor',
+    name: 'Frontend Mentor',
     value: 'frontendmentor',
-    icon: FrontendMentorIcon
+    icon: FrontendMentorIcon,
+    color: '#FFFFFF',
+    isColorLight: true
   },
 ]
 
-export default socialNetworksDropdown;
+export { socialNetworks };

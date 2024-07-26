@@ -2,7 +2,7 @@
   composes: headingSmallText from '../../styles/variables.css';
   color: var(--tertiary-text-color, #FFFFFF);
   background-color: var(--primary-color, #633CFF);
-  border-radius: var(--border-radius, 8px);
+  border-radius: var(--element-border-radius, 8px);
   padding: 11px 27px;
   min-width: 227px;
   border: none;
