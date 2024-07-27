@@ -10,14 +10,14 @@ interface IDropDownProps {
   items: IDropDownItem[];
   name: string;
   placeholder?: string;
-  Icon?: TIconElement | null;
+  IconElement?: TIconElement | null;
 }
 
 const DropDown: FC<IDropDownProps> = ({
   items,
   name,
   placeholder = 'Dropdown Field Default',
-  Icon
+  IconElement
 }) => {
   const id = nanoid();
   const [ selection, setSelection ] = useState<IDropDownItem | null>(null);
@@ -70,15 +70,13 @@ const DropDown: FC<IDropDownProps> = ({
         onClick={toggleDropdown}
       >
         <>
-          {selection?.icon ? <selection.icon className={styles.icon} /> : Icon ? <Icon className={styles.icon} /> : ''}
+          {selection?.icon ? <selection.icon className={styles.icon} /> : IconElement ? <IconElement className={styles.icon} /> : ''}
           <span className={styles.buttonText}>{selection ? selection.text : placeholder}</span>
           <ArrowIcon className={styles.arrow} />
         </>
       </button>
       <ul className={styles.list} role={'listbox'} id={id}>
-        {
-          renderItems
-        }
+        {renderItems}
       </ul>
     </div>
   );

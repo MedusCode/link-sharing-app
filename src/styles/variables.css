@@ -10,6 +10,8 @@ body {
   --primary-bg-color: #FFFFFF;
   --secondary-bg-color: #FAFAFA;
 
+  --secondary-icon-color: #FFFFFF;
+
   --contrast-shadow-color: rgba(99, 60, 255, 0.25);
   --shadow-color: rgba(0, 0, 0, 0.10);
   --contrast-shadow: 0 0 32px 0 var(--contrast-shadow-color, rgba(99, 60, 255, 0.25));

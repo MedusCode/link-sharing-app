@@ -1,7 +1,7 @@
-import ITabProps from '../types/tabs-props';
+import ITabProps from '../types/tabs-item';
 import { ReactComponent as LinkIcon } from "../assets/images/icon-link.svg";
 
-const tabsValues: ITabProps[] = [
+const tabsItems: ITabProps[] = [
   {
     text: 'Active',
     icon: LinkIcon,
@@ -16,4 +16,4 @@ const tabsValues: ITabProps[] = [
   }
 ]
 
-export default tabsValues;
+export default tabsItems;

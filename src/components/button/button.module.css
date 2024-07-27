@@ -12,12 +12,12 @@
 
 .button_primary:enabled:active {
   background-color: var(--secondary-color, #BEADFF);
-  box-shadow: var(--contrast-shadow, 0 0 32px 0 var(--contrast-shadow-color, rgba(99, 60, 255, 0.25)));
+  box-shadow: var(--contrast-shadow, 0 0 32px 0 rgba(99, 60, 255, 0.25));
 }
 
 .button_secondary {
   color: var(--primary-color, #633CFF);
-  border: var(--contrast-broder, 1px solid var(--primary-color, #633CFF));
+  border: var(--contrast-broder, 1px solid #633CFF);
   background-color: transparent;
 }
 

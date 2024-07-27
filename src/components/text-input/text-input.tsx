@@ -4,14 +4,14 @@ import styles from './text-input.module.css';
 
 interface ITextInputProps {
   type?: 'text' | 'password';
-  icon?: string;
+  iconLink?: string;
   placeholder?: string;
   errorText?: string;
 }
 
 const TextInput: FC<ITextInputProps> = ({
   type = 'text',
-  icon,
+  iconLink,
   placeholder,
   errorText
 }) => {
@@ -52,7 +52,7 @@ const TextInput: FC<ITextInputProps> = ({
           value={value}
           onChange={handleInput}
           placeholder={placeholder}
-          style={icon ? {backgroundImage: `url(${icon})`} : undefined}
+          style={iconLink ? {backgroundImage: `url(${iconLink})`} : undefined}
           ref={inputRef}
         />
       { isValid || !errorText ? '' :
