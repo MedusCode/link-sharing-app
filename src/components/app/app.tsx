@@ -5,10 +5,12 @@ import linkIcon from '../../assets/images/icon-link.svg';
 import DropDown from '../drop-down/drop-down';
 import { ReactComponent as LinkIcon } from "../../assets/images/icon-link.svg";
 import Tabs from '../tabs/tabs';
-import tabsValues from '../../constants/tabs';
-import Links from '../../models/links';
+import tabsItems from '../../constants/tabs';
+import Links from '../../classes/links';
 import { socialNetworks } from '../../constants/social-networks';
 import ImageInput from '../image-input/image-input';
+import LinkButton from '../link-button/link-button';
+import { nanoid } from 'nanoid';
 
 const App:FC = () => {
   const [ links, setLinks ] = useState<Links>(new Links(socialNetworks));
@@ -17,15 +19,26 @@ const App:FC = () => {
     <div>
       <p>Hello</p>
       <Button>Button</Button>
-      <TextInput icon={linkIcon} placeholder={'Text Field Empty'} errorText={'Please check again'}></TextInput>
+      <TextInput iconLink={linkIcon} placeholder={'Text Field Empty'} errorText={'Please check again'}></TextInput>
       <DropDown
         items={links.dropDownItems}
         name={'Link-1'}
         placeholder={'Choose a social network'}
-        Icon={LinkIcon}
+        IconElement={LinkIcon}
       />
-      <Tabs values={tabsValues}/>
+      <Tabs items={tabsItems}/>
       <ImageInput />
+      {
+        links.links.map((link) =>
+          <LinkButton
+            key={nanoid()}
+            href={'https://www.youtube.com'}
+            target={'_blank'}
+            IconElement={link.icon}
+            color={link.color}
+            isLight={link.isColorLight}
+          >{link.name}</LinkButton>)
+      }
     </div>
   );
 }

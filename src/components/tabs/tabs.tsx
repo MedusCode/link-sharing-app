@@ -1,29 +1,22 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import styles from './tabs.module.css';
-import ITabProps from '../../types/tabs-props';
+import ITabItem from '../../types/tabs-item';
 import { nanoid } from 'nanoid';
+import TabsButton from '../tabs-button/tabs-button';
 
 interface ITabsProps {
-  values: ITabProps[];
+  items: ITabItem[];
 }
 
-const Tabs: FC<ITabsProps> = ({ values }) => {
-
-
-  const generateTabsList = (): ReactNode => {
-    return values.map(tab => {
-      return (
-        <button className={styles.tab} key={nanoid()}>
-          {tab.icon ? <tab.icon className={styles.icon} /> : ''}
-          {tab.text}
-        </button>
-      )
-    })
-  }
+const Tabs: FC<ITabsProps> = ({ items }) => {
 
   return (
-    <div className={styles.tabsContainer}>
-      {generateTabsList()}
+    <div className={styles.container}>
+      {items.map(tab =>
+        <TabsButton key={nanoid()} IconElement={tab.icon ? tab.icon : undefined}>
+          {tab.text}
+        </TabsButton>
+      )}
     </div>
   );
 }

@@ -7,7 +7,7 @@
   composes: bodyMediumText from '../../styles/variables.css';
   background-color: var(--primary-bg-color, #FFFFFF);
   border-radius: var(--element-border-radius, 8px);
-  border: var(--border, 1px solid var(--border-color, #D9D9D9));
+  border: var(--border, 1px solid #D9D9D9);
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -20,8 +20,8 @@
 }
 
 .button_active {
-  border: var(--contrast-broder, 1px solid var(--primary-color, #633CFF));
-  box-shadow: var(--contrast-shadow, 0 0 32px 0 var(--contrast-shadow-color, rgba(99, 60, 255, 0.25)));
+  border: var(--contrast-broder, 1px solid #633CFF);
+  box-shadow: var(--contrast-shadow, 0 0 32px 0 rgba(99, 60, 255, 0.25));
 }
 
 .button_active .arrow {
@@ -29,7 +29,7 @@
 }
 
 .button_active ~ .list {
-  box-shadow: var(--shadow, 0px 0px 32px 0px var(--shadow-color, rgba(0, 0, 0, 0.10)));
+  box-shadow: var(--shadow, 0px 0px 32px 0px rgba(0, 0, 0, 0.10));
   opacity: 1;
   left: 0;
   top: calc(100% + 8px);
@@ -47,7 +47,7 @@
 .list {
   background-color: var(--primary-bg-color, #FFFFFF);
   border-radius: var(--element-border-radius, 8px);
-  border: var(--border, 1px solid var(--border-color, #D9D9D9));
+  border: var(--border, 1px solid #D9D9D9);
   box-sizing: border-box;
   position: absolute;
   left: 5px;

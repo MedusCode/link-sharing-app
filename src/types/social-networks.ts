@@ -1,11 +1,11 @@
-import { FC, SVGProps } from 'react';
 import THexColor from './hex-color';
+import TIconElement from './icon-element';
 
 interface ISocialNetwork {
   value: string;
   name: string;
   color: THexColor
-  icon?: FC<SVGProps<SVGSVGElement>> | null
+  icon?: TIconElement | null;
   isColorLight?: boolean;
 }
 
