@@ -6,7 +6,7 @@ export interface ILink {
   name: string;
   color: THexColor;
   isColorLight: boolean;
-  icon: TIconElement | null;
+  IconElement: TIconElement | null;
 }
 
 export default class Link implements ILink {
@@ -14,17 +14,17 @@ export default class Link implements ILink {
   name: string;
   color: THexColor;
   isColorLight: boolean;
-  icon: TIconElement | null;
+  IconElement: TIconElement | null;
 
   constructor(value: string, name: string, color: THexColor, icon: TIconElement | null = null, isColorLight: boolean = false) {
     this.value = value;
     this.name = name;
     this.color = color;
     this.isColorLight = isColorLight;
-    this.icon = icon;
+    this.IconElement = icon;
   }
 
   get dropDownItems() {
-    return ({value: this.value, text: this.name, icon: this.icon })
+    return ({value: this.value, text: this.name, icon: this.IconElement })
   }
 }

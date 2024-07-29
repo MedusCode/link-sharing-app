@@ -1,8 +1,8 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
 import styles from './login-form.module.css';
 import TextInput from '../text-input/text-input';
-import emailIconUrl from '../../assets/images/icon-email.svg';
-import passwordIconUrl from '../../assets/images/icon-password.svg';
+import { ReactComponent as EmailIcon } from '../../assets/images/icon-email.svg';
+import { ReactComponent as PasswordIcon } from '../../assets/images/icon-password.svg';
 import Button from '../button/button';
 import Link from '../link/link';
 import validateEmail from '../../assets/scripts/validateEmail';
@@ -71,7 +71,7 @@ const LoginForm: FC = () => {
       <TextInput
         value={values.email}
         type={'email'}
-        iconUrl={emailIconUrl}
+        IconElement={EmailIcon}
         placeholder={'e.g. alex@email.com'}
         label={'Email address'}
         name={'email'}
@@ -81,7 +81,7 @@ const LoginForm: FC = () => {
       <TextInput
         value={values.password}
         type={'password'}
-        iconUrl={passwordIconUrl}
+        IconElement={PasswordIcon}
         placeholder={'Enter your password'}
         label={'Password'}
         name={'password'}
