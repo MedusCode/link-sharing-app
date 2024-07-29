@@ -2,7 +2,8 @@ import { FC } from 'react';
 import styles from './button.module.css';
 
 interface IButtonProps {
-  type?: 'primary' | 'secondary';
+  style?: 'primary' | 'secondary';
+  type?: 'submit' | 'reset' | 'button';
   disabled?: boolean;
   children: string;
 }
@@ -12,11 +13,16 @@ const typeStyles = {
   secondary: styles.button_secondary
 }
 
-const Button: FC<IButtonProps> = ({ children, disabled = false, type= 'primary' }) => {
-  const typeStyle = typeStyles[type];
+const Button: FC<IButtonProps> = ({
+  children,
+  style= 'primary',
+  type = 'button',
+  disabled = false
+}) => {
+  const typeStyle = typeStyles[style];
 
   return (
-    <button className={`${styles.button} ${typeStyle}`} disabled={disabled}>
+    <button type={type} className={`${styles.button} ${typeStyle}`} disabled={disabled}>
       {children}
     </button>
   );

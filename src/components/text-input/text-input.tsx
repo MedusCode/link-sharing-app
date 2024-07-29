@@ -1,65 +1,57 @@
-import { ChangeEvent, FC, MouseEvent, useRef, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useRef } from 'react';
 import styles from './text-input.module.css';
+import TIconElement from '../../types/icon-element';
 
 
 interface ITextInputProps {
-  type?: 'text' | 'password';
-  iconLink?: string;
+  value: string;
+  errorMessage?: string;
+  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
+  type?: string;
+  IconElement?: TIconElement;
   placeholder?: string;
-  errorText?: string;
+  label?: string;
 }
 
 const TextInput: FC<ITextInputProps> = ({
+  value,
+  errorMessage,
+  onChange,
+  name,
   type = 'text',
-  iconLink,
+  IconElement,
   placeholder,
-  errorText
+  label,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [ value, setValue ] = useState<string>('');
-  const [ isValid, setIsValid ] = useState<boolean>(true)
+  const errorMessageRef = useRef<HTMLSpanElement>(null)
 
-  const validate = (value: string) => {
-    if (value.length > 10) {
-      setIsValid(false);
-      return
-    }
-
-    setIsValid(true);
-  }
-
-  const handleInput = (evt: ChangeEvent<HTMLInputElement>) => {
-    evt.preventDefault();
-    setValue(evt.target.value);
-    validate(evt.target.value);
-  }
-
-  const focusInput = (evt: MouseEvent<HTMLSpanElement>) => {
-    evt.preventDefault();
-
-    if (inputRef.current) {
-      inputRef.current.setSelectionRange(inputRef.current.value.length, inputRef.current.value.length);
-      inputRef.current.blur();
-      inputRef.current.focus();
-    }
-  }
+   useEffect(() => {
+     if (errorMessage && errorMessageRef.current && inputRef.current) {
+       const errorMessageWidth = errorMessageRef.current.offsetWidth;
+       inputRef.current.style.paddingRight = `${errorMessageWidth + 11}px`
+     } else if (!errorMessage && inputRef.current) {
+       inputRef.current.style.paddingRight = '';
+     }
+   }, [errorMessage])
 
   return (
-    <div className={`${styles.inputContainer} ${isValid ? '' : styles.container_error}`}>
+    <div className={styles.container}>
+      {label && <span className={styles.label}>{label}</span>}
+      <div className={`${styles.inputContainer} ${errorMessage ? styles.container_error : ''}`}>
+        {IconElement && <IconElement className={styles.icon} />}
         <input
-          className={styles.input}
+          className={`${styles.input} ${IconElement ? styles.input_withIcon : ''}`}
           type={type}
           value={value}
-          onChange={handleInput}
+          onChange={onChange}
+          name={name}
           placeholder={placeholder}
-          style={iconLink ? {backgroundImage: `url(${iconLink})`} : undefined}
           ref={inputRef}
         />
-      { isValid || !errorText ? '' :
-        <div className={styles.errorTextContainer} onMouseDown={focusInput}>
-          <span className={styles.errorText}>{errorText}</span>
-        </div>
-      }
+        { errorMessage && <span className={styles.errorText} ref={errorMessageRef}>{errorMessage}</span> }
+      </div>
     </div>
   );
 }

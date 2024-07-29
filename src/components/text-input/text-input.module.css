@@ -1,11 +1,21 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  composes: bodySmallText from '../../styles/variables.css';
+}
+
 .inputContainer {
+  position: relative;
   border-radius: var(--element-border-radius, 8px);
   border: var(--border, 1px solid #D9D9D9);
   box-sizing: border-box;
   display: flex;
   overflow: hidden;
-  min-width: 480px;
-  width: max-content;
   cursor: text;
   transition: 0.1s ease-in-out;
 }
@@ -25,10 +35,20 @@
   padding-right: 12px;
 }
 
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
 .input {
   composes: bodyMediumText from '../../styles/variables.css';
   width: 100%;
-  padding: 11px 16px 11px 44px;
+  padding: 11px 16px 11px 16px;
   background-position: 16px center;
   background-size: 16px 16px;
   background-repeat: no-repeat;
@@ -37,19 +57,24 @@
   caret-color: var(--primary-color, #633CFF);
 }
 
+.input_withIcon {
+  padding-left: 44px;
+}
+
 .input::placeholder {
   color: inherit;
   opacity: 0.5;
 }
 
-.errorTextContainer {
-  display: flex;
-  align-items: center;
-  padding: 0 16px 0 0;
-}
-
 .errorText {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  padding-right: 16px;
+  transform: translateY(-50%);
   composes: bodySmallText from '../../styles/variables.css';
   color: var(--error-color, #FF3939);
   white-space: nowrap;
+  pointer-events: none;
 }
+
