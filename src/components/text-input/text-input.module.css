@@ -7,6 +7,8 @@
 
 .label {
   composes: bodySmallText from '../../styles/variables.css';
+  cursor: pointer;
+  width: fit-content;
 }
 
 .inputContainer {

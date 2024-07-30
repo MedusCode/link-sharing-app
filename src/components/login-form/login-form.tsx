@@ -89,7 +89,7 @@ const LoginForm: FC = () => {
         errorMessage={errorMessages.password}
       />
       <Button type={'submit'}>Login</Button>
-      <span className={styles.text}>Don’t have an account? <Link href={'#'}>Create account</Link></span>
+      <span className={styles.text}>Don’t have an account? <Link to={'/signup'}>Create account</Link></span>
     </form>
   );
 }

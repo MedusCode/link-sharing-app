@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, useEffect, useRef } from 'react';
 import styles from './text-input.module.css';
 import TIconElement from '../../types/icon-element';
+import { nanoid } from 'nanoid';
 
 
 interface ITextInputProps {
@@ -25,7 +26,8 @@ const TextInput: FC<ITextInputProps> = ({
   label,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const errorMessageRef = useRef<HTMLSpanElement>(null)
+  const errorMessageRef = useRef<HTMLSpanElement>(null);
+  const id = nanoid();
 
    useEffect(() => {
      if (errorMessage && errorMessageRef.current && inputRef.current) {
@@ -38,7 +40,7 @@ const TextInput: FC<ITextInputProps> = ({
 
   return (
     <div className={styles.container}>
-      {label && <span className={styles.label}>{label}</span>}
+      {label && <label className={styles.label} htmlFor={id}>{label}</label>}
       <div className={`${styles.inputContainer} ${errorMessage ? styles.container_error : ''}`}>
         {IconElement && <IconElement className={styles.icon} />}
         <input
@@ -49,6 +51,7 @@ const TextInput: FC<ITextInputProps> = ({
           name={name}
           placeholder={placeholder}
           ref={inputRef}
+          id={id}
         />
         { errorMessage && <span className={styles.errorText} ref={errorMessageRef}>{errorMessage}</span> }
       </div>

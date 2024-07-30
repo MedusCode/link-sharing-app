@@ -4,6 +4,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100vw;
+  height: 100dvh;
+  background-color: var(--secondary-bg-color, #FAFAFA);
+}
+
 svg #fill_exception path {
   fill: #FFFFFF;
 }
