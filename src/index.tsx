@@ -14,6 +14,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+// TODO: Pages in separate Object
 const router = createBrowserRouter([
   {
     path: '/',

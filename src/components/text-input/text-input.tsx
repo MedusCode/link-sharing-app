@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useRef } from 'react';
+import { ChangeEvent, FocusEvent, FC, useEffect, useRef } from 'react';
 import styles from './text-input.module.css';
 import TIconElement from '../../types/icon-element';
 import { nanoid } from 'nanoid';
@@ -8,6 +8,7 @@ interface ITextInputProps {
   value: string;
   errorMessage?: string;
   onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (evt: FocusEvent<HTMLInputElement>) => void;
   name?: string;
   type?: string;
   IconElement?: TIconElement;
@@ -19,6 +20,7 @@ const TextInput: FC<ITextInputProps> = ({
   value,
   errorMessage,
   onChange,
+  onBlur,
   name,
   type = 'text',
   IconElement,
@@ -48,6 +50,7 @@ const TextInput: FC<ITextInputProps> = ({
           type={type}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
           name={name}
           placeholder={placeholder}
           ref={inputRef}
