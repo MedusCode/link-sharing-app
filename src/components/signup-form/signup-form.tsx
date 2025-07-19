@@ -7,7 +7,7 @@ import { ReactComponent as EmailIcon } from '../../assets/images/icon-email.svg'
 import { ReactComponent as PasswordIcon } from '../../assets/images/icon-password.svg';
 import isValidEmail from '../../assets/scripts/is-valid-email';
 import useTextInputs from '../../services/hooks/use-text-inputs';
-import IInputHintsConfig from '../../types/input-hints-config';
+import IInputHintsConfig from '../../types/input-hints-config.type';
 import { InputHints } from '../../constants/forms';
 
 const hintsConfig: IInputHintsConfig = {

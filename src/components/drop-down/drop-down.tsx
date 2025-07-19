@@ -2,8 +2,8 @@ import { FC, useState, MouseEvent as ReactMouseEvent, useEffect, useRef, useMemo
 import styles from './drop-down.module.css';
 import { nanoid } from 'nanoid';
 import { ReactComponent as ArrowIcon } from "../../assets/images/icon-chevron-down.svg";
-import TIconElement from '../../types/icon-element';
-import IDropDownItem from '../../types/drop-down-item';
+import TIconElement from '../../types/icon-element.type';
+import IDropDownItem from '../../types/drop-down-item.type';
 import DropDownItem from '../drop-down-item/drop-down-item';
 
 interface IDropDownProps {

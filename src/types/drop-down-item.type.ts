@@ -1,4 +1,4 @@
-import TIconElement from './icon-element';
+import TIconElement from './icon-element.type';
 
 interface IDropDownItem {
   value: string;

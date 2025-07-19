@@ -11,11 +11,11 @@ interface ILogoProps {
 const Logo: FC<ILogoProps> = ({ size = 'large', className }) => {
 
   return (
-    <a className={styles.link} href={'/'}>
+    <a className={`${styles.link} ${className}`} href={'/'}>
       {
         size === 'large'
-          ? <LargeLogo className={className} />
-          : <SmallLogo />
+          ? <LargeLogo className={styles.logo} />
+          : <SmallLogo className={styles.logo} />
       }
     </a>
   );

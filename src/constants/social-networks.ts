@@ -1,4 +1,4 @@
-import ISocialNetwork from '../types/social-networks';
+import ISocialNetwork from '../types/social-networks.type';
 import { ReactComponent as GitHubIcon } from '../assets/images/icon-github.svg';
 import { ReactComponent as TwitterIcon } from '../assets/images/icon-twitter.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/images/icon-linkedin.svg';

@@ -1,6 +1,6 @@
 import { ChangeEvent, FocusEvent, FC, useEffect, useRef } from 'react';
 import styles from './text-input.module.css';
-import TIconElement from '../../types/icon-element';
+import TIconElement from '../../types/icon-element.type';
 import { nanoid } from 'nanoid';
 
 

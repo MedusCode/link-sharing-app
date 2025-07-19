@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './tabs-button.module.css';
-import TIconElement from '../../types/icon-element';
+import TIconElement from '../../types/icon-element.type';
 
 interface ITabsButtonProps {
   children: string;
