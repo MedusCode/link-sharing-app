@@ -33,3 +33,12 @@
 .tab:active {
   background-color: var(--tertiary-color, #EFEBFF);
 }
+
+.tab_active {
+  background-color: var(--tertiary-color, #EFEBFF);
+  color: var(--primary-color, #633CFF);
+}
+
+.tab_active .icon path {
+  fill: var(--primary-color, #633CFF);
+}

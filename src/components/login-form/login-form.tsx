@@ -9,6 +9,7 @@ import { ReactComponent as PasswordIcon } from '../../assets/images/icon-passwor
 import useTextInputs from '../../services/hooks/use-text-inputs';
 import { InputHints } from '../../constants/forms';
 import IInputHintsConfig from '../../types/input-hints-config.type';
+import { useNavigate } from 'react-router-dom';
 
 const hintsConfig: IInputHintsConfig = {
   set: {
@@ -20,6 +21,7 @@ const hintsConfig: IInputHintsConfig = {
 }
 
 const LoginForm: FC = () => {
+  const navigate = useNavigate();
   const {
     values,
     hints,
@@ -47,7 +49,7 @@ const LoginForm: FC = () => {
     const canSubmit = onSubmit();
 
     if (canSubmit) {
-      window.location.reload();
+      navigate('/');
     }
   }
 

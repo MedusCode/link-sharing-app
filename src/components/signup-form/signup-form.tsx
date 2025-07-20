@@ -9,6 +9,7 @@ import isValidEmail from '../../assets/scripts/is-valid-email';
 import useTextInputs from '../../services/hooks/use-text-inputs';
 import IInputHintsConfig from '../../types/input-hints-config.type';
 import { InputHints } from '../../constants/forms';
+import { useNavigate } from 'react-router-dom';
 
 const hintsConfig: IInputHintsConfig = {
   set: {
@@ -21,6 +22,7 @@ const hintsConfig: IInputHintsConfig = {
 }
 
 const SignupForm: FC = () => {
+  const navigate = useNavigate();
   const {
     values,
     hints,
@@ -56,7 +58,7 @@ const SignupForm: FC = () => {
     const canSubmit = onSubmit();
 
     if (canSubmit) {
-      window.location.reload();
+      navigate('/login');
     }
   }
 

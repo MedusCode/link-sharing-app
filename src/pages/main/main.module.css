@@ -1,0 +1,15 @@
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "preview settings";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  gap: var(--containers-gap, 24px);
+  padding: var(--containers-gap, 24px);
+}
+
+.header {
+  grid-area: header;
+}

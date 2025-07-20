@@ -26,6 +26,8 @@ body {
   --element-border-radius: 8px;
   --container-border-radius: 12px;
 
+  --containers-gap: 24px;
+
   --disabled-opacity: 0.25;
 
   --font-family: "Instrument Sans", serif;

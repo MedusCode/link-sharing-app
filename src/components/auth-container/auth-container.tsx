@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react';
 import styles from './auth-container.module.css';
-import Logo from '../logo/logo';
 
 interface IAuthContainerProps {
   children: ReactNode;

@@ -11,13 +11,20 @@ interface ITabsProps {
 const Tabs: FC<ITabsProps> = ({ items }) => {
 
   return (
-    <div className={styles.container}>
+    <ul className={styles.container}>
       {items.map(tab =>
-        <TabsButton key={nanoid()} IconElement={tab.icon ? tab.icon : undefined}>
-          {tab.text}
-        </TabsButton>
+        <li>
+          <TabsButton
+            key={nanoid()}
+            onClick={tab.onClick}
+            isActive={tab.active}
+            IconElement={tab.icon ? tab.icon : undefined}
+          >
+            {tab.text}
+          </TabsButton>
+        </li>
       )}
-    </div>
+    </ul>
   );
 }
 

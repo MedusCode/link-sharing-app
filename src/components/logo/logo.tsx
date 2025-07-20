@@ -8,7 +8,10 @@ interface ILogoProps {
     className?: string;
 }
 
-const Logo: FC<ILogoProps> = ({ size = 'large', className }) => {
+const Logo: FC<ILogoProps> = ({
+  size = 'large',
+  className = ''
+}) => {
 
   return (
     <a className={`${styles.link} ${className}`} href={'/'}>

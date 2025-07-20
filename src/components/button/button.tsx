@@ -5,6 +5,7 @@ interface IButtonProps {
   style?: 'primary' | 'secondary';
   type?: 'submit' | 'reset' | 'button';
   disabled?: boolean;
+  className?: string;
   children: string;
 }
 
@@ -17,12 +18,13 @@ const Button: FC<IButtonProps> = ({
   children,
   style= 'primary',
   type = 'button',
+  className = '',
   disabled = false
 }) => {
   const typeStyle = typeStyles[style];
 
   return (
-    <button type={type} className={`${styles.button} ${typeStyle}`} disabled={disabled}>
+    <button type={type} className={`${styles.button} ${typeStyle} ${className}`} disabled={disabled}>
       {children}
     </button>
   );

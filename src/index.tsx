@@ -8,8 +8,10 @@ import './assets/fonts/InstrumentSans-Italic.ttf'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
-import Root from './pages/root/root';
 import Authorization from './pages/authorization/authorization';
+import Links from './pages/links/links';
+import Main from './pages/main/main';
+import ProfileDetails from './pages/profile-details/profile-details';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,18 +20,30 @@ const root = ReactDOM.createRoot(
 // TODO: Pages in separate Object
 const router = createBrowserRouter([
   {
-    path: '/',
+    element: <Main />,
+    children: [
+      {
+        path: '/',
+        element: <Links />,
+      },
+      {
+        path: 'profile',
+        element: <ProfileDetails />,
+      },
+    ]
+  },
+  {
     element: <Authorization />,
     children: [
       {
-        path: '/login',
+        path: 'login',
         element: <Login />,
       },
       {
-        path: '/signup',
+        path: 'signup',
         element: <Signup />,
-      }
-    ]
+      },
+    ],
   },
 ]);
 
