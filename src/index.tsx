@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 import Root from './pages/root/root';
+import Authorization from './pages/authorization/authorization';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,16 +19,18 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: <Authorization />,
+    children: [
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <Signup />,
+      }
+    ]
   },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/signup',
-    element: <Signup />,
-  }
 ]);
 
 root.render(

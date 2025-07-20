@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import styles from './link-button.module.css';
-import TIconElement from '../../types/icon-element';
-import TLinkTarget from '../../types/link-target';
+import TIconElement from '../../types/icon-element.type';
+import TLinkTarget from '../../types/link-target.type';
 import { ReactComponent as ArrowIcon } from "../../assets/images/icon-arrow-right.svg";
-import THexColor from '../../types/hex-color';
+import THexColor from '../../types/hex-color.type';
 
 interface ILinkButtonProps {
   href: string;

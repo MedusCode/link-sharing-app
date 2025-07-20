@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './tabs.module.css';
-import ITabItem from '../../types/tabs-item';
+import ITabItem from '../../types/tabs-item.type';
 import { nanoid } from 'nanoid';
 import TabsButton from '../tabs-button/tabs-button';
 

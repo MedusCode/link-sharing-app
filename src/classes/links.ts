@@ -1,5 +1,5 @@
 import Link from './link';
-import ISocialNetwork from '../types/social-networks';
+import ISocialNetwork from '../types/social-networks.type';
 
 interface ILinks {
   links: Link[],

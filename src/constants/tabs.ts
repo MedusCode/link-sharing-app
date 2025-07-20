@@ -1,4 +1,4 @@
-import ITabProps from '../types/tabs-item';
+import ITabProps from '../types/tabs-item.type';
 import { ReactComponent as LinkIcon } from "../assets/images/icon-link.svg";
 
 const tabsItems: ITabProps[] = [

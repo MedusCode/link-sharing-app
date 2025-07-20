@@ -1,5 +1,5 @@
 import { ChangeEvent, FocusEvent, useState } from 'react';
-import IInputHintsConfig, { THintEvent } from '../../types/input-hints-config';
+import IInputHintsConfig, { THintEvent } from '../../types/input-hints-config.type';
 import { InputHints } from '../../constants/forms';
 import initializeState from '../../assets/scripts/initialize-state';
 

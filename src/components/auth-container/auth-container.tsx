@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './auth-container.module.css';
 import Logo from '../logo/logo';
 
 interface IAuthContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   heading: string;
   subheading?: string;
 }
@@ -11,17 +11,12 @@ interface IAuthContainerProps {
 const AuthContainer: FC<IAuthContainerProps> = ({ children, heading, subheading }) => {
 
   return (
-    <div className={styles.page}>
-      <main className={styles.body}>
-        <Logo className={styles.logo} />
-        <div className={styles.formContainer}>
-          <div className={styles.header}>
-            <h1 className={styles.heading}>{heading}</h1>
-            {subheading && <span>{subheading}</span>}
-          </div>
-          {children}
-        </div>
-      </main>
+    <div className={styles.formContainer}>
+      <div className={styles.header}>
+        <h1 className={styles.heading}>{heading}</h1>
+        {subheading && <span>{subheading}</span>}
+      </div>
+      {children}
     </div>
   );
 }

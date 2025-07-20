@@ -1,5 +1,5 @@
-import TIconElement from '../types/icon-element';
-import THexColor from '../types/hex-color';
+import TIconElement from '../types/icon-element.type';
+import THexColor from '../types/hex-color.type';
 
 export interface ILink {
   value: string;

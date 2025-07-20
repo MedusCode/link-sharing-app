@@ -1,7 +1,7 @@
 import { ChangeEvent, Dispatch, FC, SetStateAction } from 'react';
 import styles from './drop-down-item.module.css';
 import { nanoid } from 'nanoid';
-import IDropDownItem from '../../types/drop-down-item';
+import IDropDownItem from '../../types/drop-down-item.type';
 
 interface IDropDownListProps {
   inputName: string;
