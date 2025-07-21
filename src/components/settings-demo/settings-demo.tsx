@@ -1,12 +1,12 @@
 import { FC, HTMLAttributes } from 'react';
-import styles from './main-demo.module.css';
+import styles from './settings-demo.module.css';
 import Card from '../card/card';
 
-interface IMainDemoProps {
+interface ISettingsDemoProps {
   className?: HTMLAttributes<HTMLElement>['className'];
 }
 
-const MainDemo: FC<IMainDemoProps> = ({
+const SettingsDemo: FC<ISettingsDemoProps> = ({
   className = ''
 }) => {
 
@@ -19,4 +19,4 @@ const MainDemo: FC<IMainDemoProps> = ({
   );
 }
 
-export default MainDemo;
+export default SettingsDemo;

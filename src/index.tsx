@@ -10,7 +10,7 @@ import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 import Authorization from './pages/authorization/authorization';
 import Links from './pages/links/links';
-import Main from './pages/main/main';
+import Settings from './pages/settings/settings';
 import ProfileDetails from './pages/profile-details/profile-details';
 
 const root = ReactDOM.createRoot(
@@ -20,7 +20,7 @@ const root = ReactDOM.createRoot(
 // TODO: Pages in separate Object
 const router = createBrowserRouter([
   {
-    element: <Main />,
+    element: <Settings />,
     children: [
       {
         path: '/',

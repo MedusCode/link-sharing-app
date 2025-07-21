@@ -2,26 +2,26 @@ import { FC, HTMLAttributes } from 'react';
 import styles from './button.module.css';
 
 interface IButtonProps {
-  style?: 'primary' | 'secondary';
+  appearance?: 'primary' | 'secondary';
   type?: 'submit' | 'reset' | 'button';
   disabled?: boolean;
   className?: HTMLAttributes<HTMLElement>['className'];
   children: string;
 }
 
-const typeStyles = {
+const appearanceStyles = {
   primary: styles.button_primary,
   secondary: styles.button_secondary
 }
 
 const Button: FC<IButtonProps> = ({
   children,
-  style = 'primary',
+  appearance = 'primary',
   type = 'button',
   className = '',
   disabled = false
 }) => {
-  const typeStyle = typeStyles[style];
+  const typeStyle = appearanceStyles[appearance];
 
   return (
     <button type={type} className={`${styles.button} ${typeStyle} ${className}`} disabled={disabled}>

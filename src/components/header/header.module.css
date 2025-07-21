@@ -5,18 +5,3 @@
   box-sizing: border-box;
   padding: 16px 24px;
 }
-
-.navigation {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  width: 120px;
-}
-
-.button {
-  width: 114px;
-}
