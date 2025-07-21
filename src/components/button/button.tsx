@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import styles from './button.module.css';
 
 interface IButtonProps {
   style?: 'primary' | 'secondary';
   type?: 'submit' | 'reset' | 'button';
   disabled?: boolean;
-  className?: string;
+  className?: HTMLAttributes<HTMLElement>['className'];
   children: string;
 }
 
@@ -16,7 +16,7 @@ const typeStyles = {
 
 const Button: FC<IButtonProps> = ({
   children,
-  style= 'primary',
+  style = 'primary',
   type = 'button',
   className = '',
   disabled = false

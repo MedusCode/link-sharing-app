@@ -13,9 +13,8 @@ const Tabs: FC<ITabsProps> = ({ items }) => {
   return (
     <ul className={styles.container}>
       {items.map(tab =>
-        <li>
+        <li key={nanoid()}>
           <TabsButton
-            key={nanoid()}
             onClick={tab.onClick}
             isActive={tab.active}
             IconElement={tab.icon ? tab.icon : undefined}

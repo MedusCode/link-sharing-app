@@ -3,7 +3,7 @@
   background-color: var(--primary-bg-color, #FFFFFF);
   border-radius: var(--container-border-radius, 12px);
   box-sizing: border-box;
-  padding: 16px 16px 16px 24px;
+  padding: 16px 24px;
 }
 
 .navigation {

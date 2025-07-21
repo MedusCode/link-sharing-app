@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import styles from './main-header.module.css';
 import Logo from '../logo/logo';
 import Tabs from '../tabs/tabs';
@@ -8,7 +8,7 @@ import ITabProps from '../../types/tabs-item.type';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 interface IMainHeaderProps {
-  className?: string;
+  className?: HTMLAttributes<HTMLElement>['className'];
 }
 
 const MainHeader: FC<IMainHeaderProps> = ({
