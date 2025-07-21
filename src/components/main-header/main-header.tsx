@@ -24,11 +24,13 @@ const MainHeader: FC<IMainHeaderProps> = ({
   }));
 
   return (
-    <div className={`${styles.header} ${className}`}>
-      <Logo className={styles.logo} />
-      <Tabs items={tabs} />
-      <Button style={'secondary'} className={styles.button}>Preview</Button>
-    </div>
+    <header className={`${styles.header} ${className}`}>
+      <nav className={styles.navigation}>
+        <Logo className={styles.logo} />
+        <Tabs items={tabs} />
+        <Button style={'secondary'} className={styles.button}>Preview</Button>
+      </nav>
+    </header>
   );
 }
 

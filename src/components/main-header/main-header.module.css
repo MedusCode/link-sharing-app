@@ -1,12 +1,16 @@
 .header {
+  width: 100%;
+  background-color: var(--primary-bg-color, #FFFFFF);
+  border-radius: var(--container-border-radius, 12px);
+  box-sizing: border-box;
+  padding: 16px 16px 16px 24px;
+}
+
+.navigation {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
-  background-color: var(--primary-bg-color, #FFFFFF);
-  border-radius: var(--container-border-radius, 12px);
-  padding: 16px 16px 16px 24px;
 }
 
 .logo {

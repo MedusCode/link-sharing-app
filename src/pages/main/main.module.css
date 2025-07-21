@@ -1,15 +1,27 @@
 .layout {
+  box-sizing: border-box;
   display: grid;
   grid-template-areas:
-    "header header"
-    "preview settings";
+    "header"
+    "main";
   grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: 100%;
   gap: var(--containers-gap, 24px);
   padding: var(--containers-gap, 24px);
 }
 
 .header {
   grid-area: header;
+}
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-areas: "demo settings";
+  grid-template-columns: minmax(387px, 560px) minmax(550px, 1fr);
+  gap: 24px;
+}
+
+.demo {
+  grid-area: demo;
 }
