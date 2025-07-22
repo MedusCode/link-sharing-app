@@ -19,7 +19,7 @@
   display: grid;
   grid-template-areas: "demo settings";
   grid-template-columns: minmax(387px, 560px) minmax(550px, 1fr);
-  gap: 24px;
+  gap: var(--containers-gap, 24px);
 }
 
 .demo {
