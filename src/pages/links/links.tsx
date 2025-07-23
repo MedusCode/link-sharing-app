@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import styles from './links.module.css';
-import SettingsLinks from '../../components/settings-links/settings-links';
+import EditorLinks from '../../components/editor-links/editor-links';
 import AnimatedSection from '../../animations/animated-section/animated-section';
 
 const Links: FC = () => {
 
   return (
     <AnimatedSection side={'left'} className={styles.container}>
-      <SettingsLinks />
+      <EditorLinks />
     </AnimatedSection>
   );
 }

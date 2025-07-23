@@ -1,12 +1,12 @@
 import { FC, HTMLAttributes } from 'react';
-import styles from './settings-demo.module.css';
+import styles from './editor-demo.module.css';
 import Card from '../card/card';
 
-interface ISettingsDemoProps {
+interface IEditorDemoProps {
   className?: HTMLAttributes<HTMLElement>['className'];
 }
 
-const SettingsDemo: FC<ISettingsDemoProps> = ({
+const EditorDemo: FC<IEditorDemoProps> = ({
   className = ''
 }) => {
 
@@ -19,4 +19,4 @@ const SettingsDemo: FC<ISettingsDemoProps> = ({
   );
 }
 
-export default SettingsDemo;
+export default EditorDemo;

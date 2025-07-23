@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import styles from './profile-details.module.css';
 import AnimatedSection from '../../animations/animated-section/animated-section';
-import SettingsLinks from '../../components/settings-links/settings-links';
+import EditorLinks from '../../components/editor-links/editor-links';
 
 const ProfileDetails: FC = () => {
 
   return (
     <AnimatedSection side={'left'}>
-      <SettingsLinks />
+      <EditorLinks />
     </AnimatedSection>
   );
 }

@@ -1,23 +1,23 @@
 import { FC } from 'react';
-import styles from './settings.module.css';
-import SettingsNavigation from '../../components/settings-navigation/settings-navigation';
-import SettingsDemo from '../../components/settings-demo/settings-demo';
+import styles from './editor.module.css';
+import EditorNavigation from '../../components/editor-navigation/editor-navigation';
+import EditorDemo from '../../components/editor-demo/editor-demo';
 import Header from '../../components/header/header';
 import AnimatedOutlet from '../../animations/animated-outlet/animated-outlet';
 
-const Settings: FC = () => {
+const Editor: FC = () => {
 
   return (
     <div className={styles.layout}>
       <Header className={styles.header}>
-        <SettingsNavigation />
+        <EditorNavigation />
       </Header>
       <main className={styles.main}>
-        <SettingsDemo className={styles.demo} />
+        <EditorDemo className={styles.demo} />
         <AnimatedOutlet mode={'wait'} initial={false} />
       </main>
     </div>
   );
 }
 
-export default Settings;
+export default Editor;

@@ -1,12 +1,12 @@
 import { FC, HTMLAttributes } from 'react';
-import styles from './settings-links.module.css';
+import styles from './editor-links.module.css';
 import Button from '../button/button';
 
-interface ISettingsLinksProps {
+interface IEditorLinksProps {
   className?: HTMLAttributes<HTMLElement>['className'];
 }
 
-const SettingsLinks: FC<ISettingsLinksProps> = ({
+const EditorLinks: FC<IEditorLinksProps> = ({
   className = ''
 }) => {
 
@@ -27,4 +27,4 @@ const SettingsLinks: FC<ISettingsLinksProps> = ({
   );
 }
 
-export default SettingsLinks;
+export default EditorLinks;
