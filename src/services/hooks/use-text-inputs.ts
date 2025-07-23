@@ -28,7 +28,6 @@ interface IUseTextInputsReturn<T extends string> {
   onSubmit: () => boolean;
 }
 
-// TODO: Refactor hook
 const useTextInputs = <T extends string>(inputs: TUseTextInputsProps<T>): IUseTextInputsReturn<T> => {
   const [values, setValues] = useState<TValues<T>>(
     initializeState(inputs, (key, input) => input.initialValue || '')
@@ -85,11 +84,8 @@ const useTextInputs = <T extends string>(inputs: TUseTextInputsProps<T>): IUseTe
     const validation = validateInput(key, newValue);
 
     setValues(prevValues => ({ ...prevValues, [key]: newValue }));
-
     setIsValid(prevIsValid => ({ ...prevIsValid, [key]: validation.isValid, }));
-
     changeHint(key, 'onChange', newValue)
-
     setIsTouched(prevIsTouched => ({ ...prevIsTouched, [key]: true }))
   }
 

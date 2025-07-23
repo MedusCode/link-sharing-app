@@ -3,7 +3,7 @@ import styles from './authorization.module.css';
 import Logo from '../../components/logo/logo';
 import AnimatedOutlet from '../../animations/animated-outlet/animated-outlet';
 import { motion } from 'framer-motion';
-import { animationsDuration } from '../../constants/animations';
+import { animationsDelay, animationsDuration } from '../../constants/animations';
 
 const Authorization: FC = () => {
   const [ height, setHeight ] = useState<number | 'auto'>('auto');
@@ -14,7 +14,7 @@ const Authorization: FC = () => {
       <motion.main
         style={{ height, pointerEvents }}
         animate={{ height }}
-        transition={{ duration: animationsDuration, ease: 'easeInOut', }}
+        transition={{ duration: animationsDuration * 2 + animationsDelay, ease: 'easeInOut', }}
         onAnimationStart={() => setPointerEvents('none')}
         onAnimationComplete={() => setPointerEvents('auto')}
         className={styles.body}
