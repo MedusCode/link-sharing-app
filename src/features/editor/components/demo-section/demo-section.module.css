@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-bg-color, #FFFFFF);
+  border-radius: var(--container-border-radius, 12px);
+}
+
+.phone {
+  box-sizing: border-box;
+  width: 307px;
+  height: 632px;
+  background-size: cover;
+  background: url('../../../../assets/images/demo-phone.svg') no-repeat center;
+  padding: 64px 35px 54px;
+}
