@@ -1,4 +1,4 @@
-import { MIN_PASSWORD_LENGTH } from '../constants/forms';
+import { MIN_PASSWORD_LENGTH } from '@shared/config/forms.constants';
 
 export const isNotEmpty = (value: string) => value !== '';
 

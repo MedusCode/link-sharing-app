@@ -4,7 +4,7 @@
 }
 
 .button {
-  composes: bodyMediumText from '../../../styles/variables.css';
+  composes: body_medium_text from '@shared/styles/variables.css';
   background-color: var(--primary-bg-color, #FFFFFF);
   border-radius: var(--element-border-radius, 8px);
   border: var(--border, 1px solid #D9D9D9);
@@ -19,24 +19,16 @@
   cursor: pointer;
 }
 
-.button_active {
+.button__active {
   border: var(--contrast-broder, 1px solid #633CFF);
   box-shadow: var(--contrast-shadow, 0 0 32px 0 rgba(99, 60, 255, 0.25));
 }
 
-.button_active .arrow {
+.button__active .arrow {
   transform: rotate(180deg);
 }
 
-.button_active ~ .list {
-  box-shadow: var(--shadow, 0px 0px 32px 0px rgba(0, 0, 0, 0.10));
-  opacity: 1;
-  left: 0;
-  top: calc(100% + 8px);
-  visibility: visible;
-}
-
-.buttonText {
+.button_text {
   width: 100%;
   background-position: 16px center;
   background-size: 16px 16px;
@@ -45,13 +37,7 @@
 }
 
 .list {
-  background-color: var(--primary-bg-color, #FFFFFF);
-  border-radius: var(--element-border-radius, 8px);
-  border: var(--border, 1px solid #D9D9D9);
-  box-sizing: border-box;
-  position: absolute;
-  left: 5px;
-  top: calc(100% + 13px);
+  --max-height: 200px;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -59,11 +45,25 @@
   min-width: 480px;
   width: max-content;
   list-style: none;
-  transition: 0.2s ease-in-out;
-  overflow: scroll;
-  opacity: 0;
-  visibility: hidden;
+  overflow-y: auto;
+  max-height: var(--max-height, 200px);
+}
+
+.list_container {
+  box-shadow: var(--shadow, 0px 0px 32px 0px rgba(0, 0, 0, 0.10));
+  border-radius: var(--element-border-radius, 8px);
+  background-color: var(--primary-bg-color, #FFFFFF);
+  border: var(--border, 1px solid #D9D9D9);
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
   z-index: 5;
+}
+
+.list_container__top {
+  bottom: calc(100% + 8px);
+  top: auto;
 }
 
 .icon {
@@ -78,3 +78,34 @@
   height: 14px;
   transition: 0.3s ease-in-out;
 }
+
+.item {
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: var(--tertiary-color, #EFEBFF);
+}
+
+.item__selected .label {
+  color: var(--primary-color, #633CFF);
+}
+
+.item__selected .icon path {
+  fill: var(--primary-color, #633CFF);
+}
+
+.item:last-child {
+  border: none;
+}
+
+.item_content {
+  border-bottom: var(--border, 1px solid #D9D9D9);
+  composes: body_medium_text from '@shared/styles/variables.css';
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+

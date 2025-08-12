@@ -1,68 +1,58 @@
-import { ButtonHTMLAttributes, FC, HTMLAttributes, MouseEvent } from 'react';
-import styles from './button.module.css';
-import { Link } from 'react-router-dom';
-import TRoutePath from '../../types/route-path.type';
-import TLinkTarget from '../../types/link-target.type';
 import clsx from 'clsx';
+import { ButtonHTMLAttributes, ComponentPropsWithoutRef, HTMLAttributes, ReactNode } from 'react';
+import { Link, To } from 'react-router-dom';
+
+
+import safeRel from '@shared/utils/safe-rel';
+
+import styles from './button.module.css';
 
 type TAppearance = 'primary' | 'secondary';
 
-interface IBaseButtonProps {
-  children: string;
+interface IBaseProps {
+  children: ReactNode;
   appearance?: TAppearance;
   className?: HTMLAttributes<HTMLElement>['className'];
 }
 
-export interface ILinkButtonProps extends IBaseButtonProps {
-  to: TRoutePath;
-  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
-  target?: TLinkTarget;
+interface ILinkButtonProps extends IBaseProps, Omit<ComponentPropsWithoutRef<typeof Link>, 'className' | 'children' | 'to'> {
+  to: To;
 }
 
-export interface IButtonProps extends IBaseButtonProps {
-  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean;
+interface INativeButtonProps extends IBaseProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'children'> {
 }
 
-const isLinkButton = (
-  props: ILinkButtonProps | IButtonProps
-): props is ILinkButtonProps => {
-  return 'to' in props;
-};
+type TButtonProps = ILinkButtonProps | INativeButtonProps;
+
+const isLink = (p: TButtonProps): p is ILinkButtonProps => 'to' in p;
 
 const appearanceStyles = {
-  primary: styles.button_primary,
-  secondary: styles.button_secondary
-}
+  primary: styles.button__primary,
+  secondary: styles.button__secondary,
+} as const;
 
-const Button: FC<IButtonProps | ILinkButtonProps> = ( props ) => {
-  const {
-    children,
-    appearance = 'primary',
-    className = '',
-  } = props;
-  const typeStyle = appearanceStyles[appearance];
+function Button(props: TButtonProps) {
+  if (isLink(props)) {
+    const { children, appearance = 'primary', className, rel, target, ...rest } = props;
 
-  if (isLinkButton(props)) {
     return (
       <Link
-        className={clsx(styles.button, styles.button_link, typeStyle, className)}
-        to={props.to}
-        onClick={props.onClick}
-        target={props.target}
+        {...rest}
+        className={clsx(styles.button, styles.button__link, appearanceStyles[appearance], className)}
+        rel={safeRel(rel, target)}
+        target={target}
       >
         {children}
       </Link>
     );
   }
 
+  const { children, appearance = 'primary', className, type, ...rest } = props;
   return (
     <button
-      className={clsx(styles.button, typeStyle, className)}
-      type={props.type ?? 'button'}
-      disabled={props.disabled}
-      onClick={props.onClick}
+      {...rest}
+      type={type ?? 'button'}
+      className={clsx(styles.button, appearanceStyles[appearance], className)}
     >
       {children}
     </button>

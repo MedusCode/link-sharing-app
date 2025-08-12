@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-div.linkPlaceholder {
+div.link_placeholder {
   width: 237px;
   height: 44px;
   border-radius: var(--element-border-radius, 8px);

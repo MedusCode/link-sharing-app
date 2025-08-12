@@ -5,7 +5,7 @@
   background-color: var(--primary-placeholder-color, #EEEEEE);
 }
 
-.placeholder_animated {
+.placeholder__animated {
   background: linear-gradient(-45deg, var(--primary-placeholder-color, #EEEEEE) 49%, #FAFAFA 50%, var(--primary-placeholder-color, #EEEEEE) 51%) fixed;
   background-size: 200% 100%;
   animation: shimmer 10s ease-out infinite;
@@ -16,6 +16,6 @@
     background-position-x: 200%;
   }
   100% {
-    background-position-x: 0%;
+    background-position-x: 0;
   }
 }

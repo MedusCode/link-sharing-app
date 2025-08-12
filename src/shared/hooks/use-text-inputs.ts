@@ -1,7 +1,8 @@
 import { ChangeEvent, FocusEvent, useState } from 'react';
-import ITextInputHintsConfig, { THintEvent } from '../types/text-input-hints-config.type';
-import { InputHints } from '../constants/forms';
-import mapObjectValues from '../utils/map-object-values';
+
+import { InputHints } from '@shared/config/forms.constants';
+import ITextInputHintsConfig, { THintEvent } from '@shared/types/text-input-hints-config.type';
+import mapObjectValues from '@shared/utils/map-object-values';
 
 type TValues<T extends string> = { [key in T]: string };
 type THints<T extends string> = { [key in T]: string | null };
@@ -29,16 +30,16 @@ interface IUseTextInputsReturn<T extends string> {
 }
 
 const useTextInputs = <T extends string>(inputs: TUseTextInputsConfig<T>): IUseTextInputsReturn<T> => {
-  const [values, setValues] = useState<TValues<T>>(
+  const [ values, setValues ] = useState<TValues<T>>(
     mapObjectValues(inputs, (key, input) => input.initialValue || '')
   );
-  const [hints, setHints] = useState<THints<T>>(
+  const [ hints, setHints ] = useState<THints<T>>(
     mapObjectValues(inputs, () => null)
   );
-  const [isValid, setIsValid] = useState<TIsValid<T>>(
+  const [ isValid, setIsValid ] = useState<TIsValid<T>>(
     mapObjectValues(inputs, () => false)
   );
-  const [isTouched, setIsTouched] = useState<TIsTouched<T>>(
+  const [ isTouched, setIsTouched ] = useState<TIsTouched<T>>(
     mapObjectValues(inputs, () => false)
   );
 
@@ -89,7 +90,7 @@ const useTextInputs = <T extends string>(inputs: TUseTextInputsConfig<T>): IUseT
     setIsTouched(prevIsTouched => ({ ...prevIsTouched, [key]: true }))
   }
 
-  const handleBlur = (key: T) => (evt: FocusEvent<HTMLInputElement>) => {
+  const handleBlur = (key: T) => () => {
     if (!isTouched[key]) return;
 
     changeHint(key, 'onBlur')

@@ -1,6 +1,8 @@
 import { FC, HTMLAttributes } from 'react';
+
+import Placeholder from '@shared/components/placeholder/placeholder';
+
 import styles from './card-profile.module.css';
-import Placeholder from '../../placeholder/placeholder';
 
 interface ICardProfileProps {
   className?: HTMLAttributes<HTMLElement>['className'];
@@ -12,9 +14,9 @@ const CardProfile: FC<ICardProfileProps> = ({
 
   return (
     <div className={className}>
-      <Placeholder className={styles.imagePlaceholder} />
-      <Placeholder className={styles.namePlaceholder} />
-      <Placeholder className={styles.emailPlaceholder} />
+      <Placeholder className={styles.image_placeholder} />
+      <Placeholder className={styles.name_placeholder} />
+      <Placeholder className={styles.email_placeholder} />
     </div>
   );
 }

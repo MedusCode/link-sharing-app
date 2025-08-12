@@ -1,19 +1,20 @@
-import { FC, HTMLAttributes } from 'react';
-import styles from './placeholder.module.css';
 import clsx from 'clsx';
+import { FC, HTMLAttributes } from 'react';
+
+import styles from './placeholder.module.css';
 
 interface IPlaceholderProps {
-  animation?: boolean;
+  isAnimated?: boolean;
   className?: HTMLAttributes<HTMLElement>['className'];
 }
 
 const Placeholder: FC<IPlaceholderProps> = ({
-  animation = true,
+  isAnimated = true,
   className = '',
 }) => {
 
   return (
-    <div className={clsx(styles.placeholder, className, { [styles.placeholder_animated]: animation })} />
+    <div className={clsx(styles.placeholder, className, { [styles.placeholder__animated]: isAnimated })} />
   );
 }
 

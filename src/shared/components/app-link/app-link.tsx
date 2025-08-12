@@ -1,39 +1,49 @@
-import { FC } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import clsx from 'clsx';
+import { AnchorHTMLAttributes, ComponentPropsWithoutRef, FC, HTMLAttributes, ReactNode } from 'react';
+import { Link as RouterLink, To } from 'react-router-dom';
+
+import safeRel from '@shared/utils/safe-rel';
+
 import styles from './app-link.module.css';
-import TLinkTarget from '../../types/link-target.type';
 
-interface ILinkProps {
-  children: string;
+interface IAppLinkBaseProps {
+  children: ReactNode;
+  className?: HTMLAttributes<HTMLElement>['className'];
+}
+
+interface IExternalLinkProps extends IAppLinkBaseProps,
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | 'children' | 'href'> {
   href: string;
-  target?: TLinkTarget;
 }
 
-interface IRouterLinkProps {
-  children: string;
-  to: string;
-  target?: TLinkTarget;
+interface IInternalLinkProps extends IAppLinkBaseProps,
+  Omit<ComponentPropsWithoutRef<typeof RouterLink>, 'className' | 'children' | 'to'> {
+  to: To;
 }
 
-const isRouterLink = (props: ILinkProps | IRouterLinkProps): props is IRouterLinkProps => {
-  return (props as IRouterLinkProps).to !== undefined;
-}
+type TAppLinkProps = IExternalLinkProps | IInternalLinkProps;
 
-const AppLink: FC<ILinkProps | IRouterLinkProps> = (props) => {
+const isInternal = (p: TAppLinkProps): p is IInternalLinkProps => 'to' in p;
 
-  if (isRouterLink(props)) {
+const AppLink: FC<TAppLinkProps> = (props) => {
+  const className = clsx(styles.link, props.className);
+
+  if (isInternal(props)) {
+    const { to, children, ...rest } = props;
     return (
-      <RouterLink className={styles.link} to={props.to}>
-        {props.children}
+      <RouterLink className={className} to={to} {...rest}>
+        {children}
       </RouterLink>
     );
-  } else {
-    return (
-      <a className={styles.link} href={props.href}>
-        {props.children}
-      </a>
-    );
   }
-}
+
+  const { href, target, rel, children, ...rest } = props;
+
+  return (
+    <a className={className} href={href} target={target} rel={safeRel(rel, target)} {...rest}>
+      {children}
+    </a>
+  );
+};
 
 export default AppLink;

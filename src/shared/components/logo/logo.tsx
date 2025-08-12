@@ -1,9 +1,12 @@
-import { FC, HTMLAttributes } from 'react';
-import styles from './logo.module.css';
-import { ReactComponent as LargeLogo } from '../../../assets/images/logo-devlinks-large.svg';
-import { ReactComponent as SmallLogo } from '../../../assets/images/logo-devlinks-small.svg';
-import { Link } from 'react-router-dom';
 import clsx from 'clsx';
+import { FC, HTMLAttributes } from 'react';
+import { Link } from 'react-router-dom';
+
+import { ReactComponent as LargeLogo } from '@shared/assets/images/logo-devlinks-large.svg';
+import { ReactComponent as SmallLogo } from '@shared/assets/images/logo-devlinks-small.svg';
+
+import styles from './logo.module.css';
+
 
 interface ILogoProps {
   size?: 'large' | 'small';

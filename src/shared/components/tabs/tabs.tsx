@@ -1,7 +1,9 @@
 import { FC } from 'react';
+
+import ITabItem from '@shared/types/tab-item.type';
+
+import TabsLink from './internal/tabs-link';
 import styles from './tabs.module.css';
-import TabsLink from './tabs-link/tabs-link';
-import ITabItem from '../../types/tab-item.type';
 
 interface ITabsProps {
   items: ITabItem[]
@@ -12,13 +14,13 @@ const Tabs: FC<ITabsProps> = ({ items }) => {
   return (
     <ul className={styles.container}>
       {items.map(tab =>
-        <li key={tab.content.text}>
+        <li key={tab.text}>
           <TabsLink
-            to={tab.content.to}
+            to={tab.to}
             isActive={tab.isActive}
-            IconElement={tab.content.IconElement}
+            IconElement={tab.IconElement}
           >
-            {tab.content.text}
+            {tab.text}
           </TabsLink>
         </li>
       )}

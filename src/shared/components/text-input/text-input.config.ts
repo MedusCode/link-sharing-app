@@ -1,0 +1,1 @@
+export const TEXT_INPUT_ERROR_MSG_PADDING = 13;

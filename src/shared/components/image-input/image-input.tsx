@@ -1,7 +1,9 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
-import styles from './image-input.module.css';
-import { ReactComponent as IconUploadImage } from '../../../assets/images/icon-upload-image.svg';
 import clsx from 'clsx';
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
+
+import { ReactComponent as IconUploadImage } from '@shared/assets/images/icon-upload-image.svg';
+
+import styles from './image-input.module.css';
 
 
 const ImageInput: FC = () => {
@@ -18,16 +20,16 @@ const ImageInput: FC = () => {
     if (imageUrl && imageRef.current) {
       imageRef.current.src = imageUrl;
     }
-  }, [imageUrl])
+  }, [ imageUrl ])
 
   return (
-    <label className={clsx(styles.container, { [styles.container_loaded]: imageUrl} )}>
+    <label className={clsx(styles.container, { [styles.container__loaded]: imageUrl })}>
       {
         imageUrl && <img className={styles.image} ref={imageRef} alt={'Not found'} />
       }
       <div className={styles.caption}>
-        <IconUploadImage className={clsx(styles.captionImage, { [styles.captionImage_loaded]: imageUrl })} />
-        <span className={clsx(styles.captionText, { [styles.captionText_loaded]: imageUrl })}>
+        <IconUploadImage className={clsx(styles.caption_image, { [styles.caption_image__loaded]: imageUrl })} />
+        <span className={clsx(styles.caption_text, { [styles.caption_text__loaded]: imageUrl })}>
           {imageUrl ? "Change Image" : "+ Upload Image"}
         </span>
       </div>

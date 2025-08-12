@@ -1,5 +1,5 @@
-import THexColor from './hex-color.type';
-import TIconElement from './icon-element.type';
+import THexColor from '@shared/types/hex-color.type';
+import TIconElement from '@shared/types/icon-element.type';
 
 interface ISocialNetwork {
   value: string;

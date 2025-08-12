@@ -1,0 +1,84 @@
+body {
+  --primary-color: #633CFF;
+  --secondary-color: #BEADFF;
+  --tertiary-color: #EFEBFF;
+
+  --primary-text-color: #333333;
+  --secondary-text-color: #737373;
+  --tertiary-text-color: #FFFFFF;
+
+  --primary-bg-color: #FFFFFF;
+  --secondary-bg-color: #FAFAFA;
+
+  --secondary-icon-color: #FFFFFF;
+
+  --primary-placeholder-color: #EEEEEE;
+
+  --contrast-shadow-color: rgba(99, 60, 255, 0.25);
+  --shadow-color: rgba(0, 0, 0, 0.10);
+  --contrast-shadow: 0 0 32px 0 var(--contrast-shadow-color, rgba(99, 60, 255, 0.25));
+  --shadow: 0px 0px 32px 0px var(--shadow-color, rgba(0, 0, 0, 0.10));
+
+  --border-color: #D9D9D9;
+  --border: 1px solid var(--border-color, #D9D9D9);
+  --contrast-broder: 1px solid var(--primary-color, #633CFF);
+
+  --error-color: #FF3939;
+
+  --element-border-radius: 8px;
+  --container-border-radius: 12px;
+
+  --containers-gap: 24px;
+
+  --disabled-opacity: 0.25;
+
+  --font-family: "Instrument Sans", serif;
+}
+
+.heading_medium_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.heading_small_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.body_medium_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.body_small_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.section_container {
+  width: 100%;
+  background-color: var(--primary-bg-color, #FFFFFF);
+  border-radius: var(--container-border-radius, 12px);
+  padding: 40px;
+}
+
+.hide_element {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  opacity: 0;
+}

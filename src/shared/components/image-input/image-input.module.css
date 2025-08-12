@@ -9,7 +9,7 @@
   background-color: var(--tertiary-color, #EFEBFF);
 }
 
-.container_loaded::after {
+.container__loaded::after {
   position: absolute;
   display: block;
   content: '';
@@ -51,20 +51,20 @@
   z-index: 3;
 }
 
-.captionImage {
+.caption_image {
   width: 40px;
   height: 40px;
 }
 
-.captionImage_loaded path {
+.caption_image__loaded path {
   fill: var(--tertiary-text-color, #FFFFFF);
 }
 
-.captionText {
-  composes: headingSmallText from '../../../styles/variables.css';
+.caption_text {
+  composes: heading_small_text from '@shared/styles/variables.css';
   color: var(--primary-color, #633CFF);
 }
 
-.captionText_loaded {
+.caption_text__loaded {
   color: var(--tertiary-text-color, #FFFFFF);
 }

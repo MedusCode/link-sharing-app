@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import styles from './card.module.css';
+
 import CardProfile from './card-profile/card-profile';
 import CardSocialLinks from './card-social-links/card-social-links';
+import styles from './card.module.css';
 
 const Card: FC = () => {
 

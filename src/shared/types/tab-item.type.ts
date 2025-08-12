@@ -1,14 +1,6 @@
-import TRoutePath from './route-path.type';
-import TIconElement from './icon-element.type';
+import ITabItemContent from '@shared/types/tab-item-content.type';
 
-export interface ITabItemContent {
-  text: string;
-  to: TRoutePath;
-  IconElement?: TIconElement;
-}
-
-interface ITabItem {
-  content: ITabItemContent;
+interface ITabItem extends ITabItemContent {
   isActive?: boolean;
 }
 

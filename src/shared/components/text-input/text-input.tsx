@@ -1,63 +1,73 @@
-import { ChangeEvent, FocusEvent, FC, useEffect, useRef } from 'react';
-import styles from './text-input.module.css';
-import { nanoid } from 'nanoid';
-import ITextInputContent from '../../types/text-input-content.type';
 import clsx from 'clsx';
+import { FC, forwardRef, InputHTMLAttributes, SVGProps, useEffect, useId, useImperativeHandle, useRef } from 'react';
+
+import { TEXT_INPUT_ERROR_MSG_PADDING } from '@shared/components/text-input/text-input.config';
+
+import styles from './text-input.module.css';
 
 
-interface ITextInputProps {
-  content: ITextInputContent;
-  value: string;
+interface ITextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'children'> {
+  label?: string;
   errorMessage?: string;
-  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (evt: FocusEvent<HTMLInputElement>) => void;
-  name?: string;
+  IconElement?: FC<SVGProps<SVGSVGElement>>;
+  containerClassName?: string;
 }
 
-const TextInput: FC<ITextInputProps> = ({
-  content,
-  value,
+const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(({
+  label,
   errorMessage,
-  onChange,
-  onBlur,
-  name,
-}) => {
-  const { label, placeholder, type, IconElement } = content;
+  IconElement,
+  id: idProp,
+  containerClassName,
+  className,
+  ...inputProps
+}, ref) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const errorMessageRef = useRef<HTMLSpanElement>(null);
-  const id = useRef(nanoid()).current;
+  const reactId = useId();
+  const id = idProp ?? reactId;
   const errorId = `${id}-error`;
 
+  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
+
   useEffect(() => {
-     if (errorMessage && errorMessageRef.current && inputRef.current) {
-       const errorMessageWidth = errorMessageRef.current.offsetWidth;
-       inputRef.current.style.paddingRight = `${errorMessageWidth + 11}px`
-     } else if (!errorMessage && inputRef.current) {
-       inputRef.current.style.paddingRight = '';
-     }
-   }, [errorMessage])
+    const node = inputRef.current;
+    const errorNode = errorMessageRef.current;
+    if (!node) return;
+
+    if (errorMessage && errorNode) {
+      const width = errorNode.offsetWidth;
+      node.style.paddingRight = `${width + TEXT_INPUT_ERROR_MSG_PADDING}px`;
+    } else {
+      node.style.paddingRight = '';
+    }
+  }, [ errorMessage ]);
 
   return (
-    <div className={styles.container}>
-      {label && <label className={styles.label} htmlFor={id}>{label}</label>}
-      <div className={clsx(styles.inputContainer, { [styles.container_error]: errorMessage })}>
+    <div className={clsx(styles.container, containerClassName)}>
+      {label && (
+        <label className={styles.label} htmlFor={id}>
+          {label}
+        </label>
+      )}
+      <div className={clsx(styles.input_container, { [styles.container_error]: !!errorMessage })}>
         {IconElement && <IconElement className={styles.icon} />}
         <input
-          className={clsx(styles.input, { [styles.input_withIcon]: IconElement })}
-          type={type}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          name={name}
-          placeholder={placeholder}
-          ref={inputRef}
+          {...inputProps}
           id={id}
+          ref={inputRef}
+          className={clsx(styles.input, { [styles.input__with_icon]: !!IconElement }, className)}
           aria-invalid={!!errorMessage}
           aria-describedby={errorMessage ? errorId : undefined}
         />
-        { errorMessage && <span id={errorId} className={styles.errorText} ref={errorMessageRef}>{errorMessage}</span> }
+        {errorMessage && (
+          <span aria-live="polite" id={errorId} className={styles.error_text} ref={errorMessageRef}>
+            {errorMessage}
+          </span>
+        )}
       </div>
     </div>
   );
-}
+});
+
 export default TextInput;

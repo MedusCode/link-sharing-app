@@ -1,5 +1,5 @@
 .button {
-  composes: headingSmallText from '../../../styles/variables.css';
+  composes: heading_small_text from '@shared/styles/variables.css';
   color: var(--tertiary-text-color, #FFFFFF);
   background-color: var(--primary-color, #633CFF);
   border-radius: var(--element-border-radius, 8px);
@@ -7,25 +7,27 @@
   border: none;
   cursor: pointer;
   transition: 0.1s ease-in-out;
-}
-
-.button_link {
   text-decoration: none;
   text-align: center;
 }
 
-.button_primary:enabled:active, .button_link.button_primary:active {
+.button__link {
+  text-decoration: none;
+  text-align: center;
+}
+
+.button__primary:enabled:active, .button__link.button__primary:active {
   background-color: var(--secondary-color, #BEADFF);
   box-shadow: var(--contrast-shadow, 0 0 32px 0 rgba(99, 60, 255, 0.25));
 }
 
-.button_secondary {
+.button__secondary {
   color: var(--primary-color, #633CFF);
   border: var(--contrast-broder, 1px solid #633CFF);
   background-color: transparent;
 }
 
-.button_secondary:enabled:active, .button_link.button_secondary:active {
+.button__secondary:enabled:active, .button__link.button__secondary:active {
   background-color: var(--tertiary-color, #EFEBFF);
 }
 

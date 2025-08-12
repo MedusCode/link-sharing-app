@@ -6,12 +6,12 @@
 }
 
 .label {
-  composes: bodySmallText from '../../../styles/variables.css';
+  composes: body_small_text from '@shared/styles/variables.css';
   cursor: pointer;
   width: fit-content;
 }
 
-.inputContainer {
+.input_container {
   position: relative;
   border-radius: var(--element-border-radius, 8px);
   border: var(--border, 1px solid #D9D9D9);
@@ -22,7 +22,7 @@
   transition: 0.1s ease-in-out;
 }
 
-.inputContainer:focus-within {
+.input_container:focus-within {
   border: var(--contrast-broder, 1px solid #633CFF);
   box-shadow: var(--contrast-shadow, 0 0 32px 0 rgba(99, 60, 255, 0.25));
 }
@@ -48,7 +48,7 @@
 }
 
 .input {
-  composes: bodyMediumText from '../../../styles/variables.css';
+  composes: body_medium_text from '@shared/styles/variables.css';
   width: 100%;
   padding: 11px 16px 11px 16px;
   background-position: 16px center;
@@ -59,7 +59,7 @@
   caret-color: var(--primary-color, #633CFF);
 }
 
-.input_withIcon {
+.input__with_icon {
   padding-left: 44px;
 }
 
@@ -68,13 +68,13 @@
   opacity: 0.5;
 }
 
-.errorText {
+.error_text {
+  composes: body_small_text from '@shared/styles/variables.css';
   position: absolute;
   right: 0;
   top: 50%;
   padding-right: 16px;
   transform: translateY(-50%);
-  composes: bodySmallText from '../../../styles/variables.css';
   color: var(--error-color, #FF3939);
   white-space: nowrap;
   pointer-events: none;

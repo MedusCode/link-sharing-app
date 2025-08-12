@@ -1,17 +1,18 @@
-import { FC } from 'react';
-import styles from './social-link.module.css';
-import TIconElement from '../../types/icon-element.type';
-import TLinkTarget from '../../types/link-target.type';
-import { ReactComponent as ArrowIcon } from "../../../assets/images/icon-arrow-right.svg";
-import THexColor from '../../types/hex-color.type';
 import clsx from 'clsx';
+import { AnchorHTMLAttributes, CSSProperties, FC } from 'react';
 
-interface ISocialLinkProps {
+import { ReactComponent as ArrowIcon } from "@shared/assets/images/icon-arrow-right.svg";
+import THexColor from '@shared/types/hex-color.type';
+import TIconElement from '@shared/types/icon-element.type';
+
+import styles from './social-link.module.css';
+
+interface ISocialLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'className' | 'children'> {
   href: string;
   IconElement?: TIconElement | null;
-  color?: THexColor;
+  color?: THexColor
   isLight?: boolean;
-  target?: TLinkTarget;
+  className?: string;
   children: string;
 }
 
@@ -20,16 +21,19 @@ const SocialLink: FC<ISocialLinkProps> = ({
   IconElement,
   color,
   isLight = false,
-  target,
-  children
+  target = '_blank',
+  className,
+  children,
+  ...restProps
 }) => {
 
   return (
     <a
-      className={clsx(styles.button, { [styles.button_light]: isLight })}
-      target={target ? target : '_self'}
       href={href}
-      style={color ? {backgroundColor: color} : undefined}
+      className={clsx(styles.button, { [styles.button__light]: isLight }, className)}
+      target={target}
+      style={color ? { '--bg-color': color } as CSSProperties : undefined}
+      {...restProps}
     >
       <div className={styles.container}>
         {IconElement && <IconElement className={styles.icon} />}
