@@ -1,3 +1,7 @@
+.container {
+  padding: 0 23px;
+}
+
 div.image_placeholder {
   width: 96px;
   height: 96px;

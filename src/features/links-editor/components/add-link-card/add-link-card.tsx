@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import React, { FC, HTMLAttributes, MouseEvent, useEffect, useMemo, useState } from 'react';
+import { FC, HTMLAttributes, MouseEvent, useEffect, useMemo, useState } from 'react';
 
 import addLinkCardPreset from '@features/links-editor/components/add-link-card/add-link-card.preset';
-import { ILinkItem } from '@features/links-editor/model/types';
+import { useLinksForm } from '@features/links-editor/context/form-context';
 import { ReactComponent as DragAndDropIcon } from '@shared/assets/images/icon-drag-and-drop.svg';
 import DropDown from '@shared/components/drop-down/drop-down';
 import TextButton from '@shared/components/text-button/text-button';
@@ -11,9 +11,10 @@ import { InputHints } from '@shared/config/forms.constants';
 import SocialNetworksPreset from '@shared/config/social-networks.preset';
 import useTextInputs from '@shared/hooks/use-text-inputs';
 import IDropDownItem from '@shared/types/drop-down-item.type';
+import { ILinkItem } from '@shared/types/link-item.type';
 import { TSocialId } from '@shared/types/social-id.type';
 import ITextInputHintsConfig from '@shared/types/text-input-hints-config.type';
-import { isNotEmpty, isValidEmail } from '@shared/utils/validation';
+import { isNotEmpty, isValidUrl } from '@shared/utils/validation';
 
 import styles from './add-link-card.module.css';
 
@@ -46,46 +47,51 @@ const AddLinkCard: FC<IAddLinkCardProps> = ({
   className = ''
 }) => {
   const { id: socialId, order, href } = link;
+  const { register } = useLinksForm();
   const {
     values,
     hints,
     onChange,
-    // onSubmit
+    onSubmit
   } = useTextInputs({
     link: {
       initialValue: href,
       hints: hintsConfig,
       validationFunc: {
         [InputHints.NOT_EMPTY]: isNotEmpty,
-        [InputHints.VALID_EMAIL]: isValidEmail,
+        [InputHints.VALID_URL]: isValidUrl,
       }
     }
   });
   const [ dropDownValue, setDropDownValue ] = useState<TSocialId | null>(socialId);
 
   const dropDownItems: Array<IDropDownItem<TSocialId>> = useMemo(() => {
-    const ids = [socialId, ...availableSocialIds];
+    const ids = [ socialId, ...availableSocialIds ];
     return ids.map((id) => ({
       value: id,
       text: SocialNetworksPreset[id].name,
       IconElement: SocialNetworksPreset[id].IconElement,
     }));
-  }, [socialId, availableSocialIds]);
+  }, [ socialId, availableSocialIds ]);
 
-  const onRemoveClick = (evt: MouseEvent<HTMLButtonElement>)=> {
+  const handleRemoveClick = (evt: MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
     removeLink(socialId);
   }
 
   useEffect(() => {
     changeLinkHref(socialId, values.link)
-  }, [values.link])
+  }, [ values.link ])
 
   useEffect(() => {
     if (dropDownValue && socialId !== dropDownValue) {
       changeLinkPlatform(socialId, dropDownValue)
     }
-  }, [dropDownValue])
+  }, [ dropDownValue ])
+
+  useEffect(() => {
+    return register(link.id, () => onSubmit());
+  }, [register, link.id, onSubmit]);
 
   return (
     <li className={clsx(styles.container, className)} key={`${socialId}-${order}2`}>
@@ -94,7 +100,7 @@ const AddLinkCard: FC<IAddLinkCardProps> = ({
           <DragAndDropIcon />
           <span>{`${headingNumText}${order + 1}`}</span>
         </div>
-        <TextButton type={'button'} onClick={onRemoveClick}>{removeButtonText}</TextButton>
+        <TextButton type={'button'} onClick={handleRemoveClick}>{removeButtonText}</TextButton>
       </div>
       <DropDown
         items={dropDownItems}

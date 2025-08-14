@@ -2,7 +2,7 @@ import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolki
 
 import type { TSocialId } from '@shared/types/social-id.type';
 
-import type { ILinkItem } from './types';
+import type { ILinkItem } from '@shared/types/link-item.type';
 
 const adapter = createEntityAdapter<ILinkItem, string>({
   selectId: (link) => link.id,

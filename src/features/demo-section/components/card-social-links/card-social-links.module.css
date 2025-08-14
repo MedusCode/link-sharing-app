@@ -3,8 +3,11 @@
   flex-direction: column;
   gap: 20px;
   list-style: none;
-  padding: 0;
   margin: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+  border-radius: var(--element-border-radius, 8px);
+  padding: 0 23px;
 }
 
 div.link_placeholder {
