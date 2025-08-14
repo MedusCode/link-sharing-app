@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FC, HTMLAttributes } from 'react';
 
-import styles from '@features/demo-section/components/card-social-links/card-social-links.module.css';
+import styles from '@features/demo/components/card-social-links/card-social-links.module.css';
 import Placeholder from '@shared/components/placeholder/placeholder';
 import SocialLink from '@shared/components/social-link/social-link';
 import socialNetworksPreset from '@shared/config/social-networks.preset';

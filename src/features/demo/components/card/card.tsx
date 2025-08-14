@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import styles from '@features/demo-section/components/card/card.module.css';
-import CardSocialLinks from '@features/demo-section/components/card-social-links/card-social-links';
-import CardProfile from '@features/demo-section/components/profile-section/profile-section';
+import styles from '@features/demo/components/card/card.module.css';
+import CardSocialLinks from '@features/demo/components/card-social-links/card-social-links';
+import CardProfile from '@features/demo/components/profile-section/profile-section';
 import { ILinkItem } from '@shared/types/link-item.type';
 
 interface ICardProps {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FC, HTMLAttributes } from 'react';
 
-import styles from '@features/demo-section/components/profile-section/card-profile.module.css';
+import styles from '@features/demo/components/profile-section/card-profile.module.css';
 import Placeholder from '@shared/components/placeholder/placeholder';
 
 

@@ -5,7 +5,7 @@ import AnimatedOutlet from '@animations/components/animated-outlet/animated-outl
 import AnimatedSlideContainer from '@animations/components/animated-slide-container/animated-slide-container';
 import { useAppSelector } from '@app/store/hooks';
 import { RootState } from '@app/store/types';
-import DemoSection from '@features/demo-section/demo-section';
+import Demo from '@features/demo/demo';
 import { createLinksEditorSelectors } from '@features/links-editor/model/selectors';
 import Button from '@shared/components/button/button';
 import HeaderContainer from '@shared/components/header-container/header-container';
@@ -52,7 +52,7 @@ const EditorPage: FC = () => {
       </AnimatedSlideContainer>
       <main className={styles.main}>
         <AnimatedSlideContainer animation={editorDemoAnimationPreset} className={styles.demo_container}>
-          <DemoSection links={links} className={styles.demo} />
+          <Demo links={links} className={styles.demo} />
         </AnimatedSlideContainer>
         <AnimatedSlideContainer animation={editorSectionAnimationPreset} className={styles.section_container}>
           <AnimatedOutlet animation={editorOutletAnimationPreset} />

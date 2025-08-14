@@ -1,18 +1,19 @@
 import clsx from 'clsx';
 import { FC, HTMLAttributes } from 'react';
 
-import Card from '@features/demo-section/components/card/card';
+import styles from 'features/demo/demo.module.css';
+
+import Card from '@features/demo/components/card/card';
 import SectionContainer from '@shared/components/section-container/section-container';
 import { ILinkItem } from '@shared/types/link-item.type';
 
-import styles from './demo-section.module.css';
 
 interface IDemoSectionProps {
   links: ILinkItem[];
   className?: HTMLAttributes<HTMLElement>['className'];
 }
 
-const DemoSection: FC<IDemoSectionProps> = ({
+const Demo: FC<IDemoSectionProps> = ({
   links,
   className = ''
 }) => {
@@ -26,4 +27,4 @@ const DemoSection: FC<IDemoSectionProps> = ({
   );
 }
 
-export default DemoSection;
+export default Demo;
