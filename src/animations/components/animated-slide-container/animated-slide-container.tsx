@@ -13,26 +13,37 @@ import ISlideAnimation from '@animations/types/slide-animation.type';
 
 
 interface IAnimatedSlideContainerProps {
-  animation: ISlideAnimation;
+  animation?: ISlideAnimation;
   as?: keyof typeof elementsMap;
   disablePointer?: boolean;
   className?: HTMLAttributes<HTMLElement>['className'];
+  style?: CSSProperties;
   children: ReactNode;
 }
 
+const DEFAULT_ANIMATION: Required<ISlideAnimation> = {
+  side: 'left',
+  shift: MOTION_ANIMATION_SHIFT,
+  duration: MOTION_ANIMATION_DURATION,
+  delay: MOTION_ANIMATION_DELAY,
+  isExitAbsolute: false,
+};
+
 const AnimatedSlideContainer: FC<IAnimatedSlideContainerProps> = ({
-  animation: {
-    side = 'left',
-    shift = MOTION_ANIMATION_SHIFT,
-    duration = MOTION_ANIMATION_DURATION,
-    delay = MOTION_ANIMATION_DELAY,
-    isExitAbsolut = false,
-  },
+  animation,
   as = 'div',
-  disablePointer = false,
+  disablePointer = true,
   className = '',
-  children
+  style,
+  children,
 }) => {
+  const {
+    side,
+    shift,
+    duration,
+    delay,
+    isExitAbsolute,
+  } = { ...DEFAULT_ANIMATION, ...animation };
   const { pointerEvents, onAnimationStart, onAnimationComplete } = usePointerLock(disablePointer);
   const MotionComponent = elementsMap[as];
   const sides = Array.isArray(side) ? side : [ side ];
@@ -66,7 +77,7 @@ const AnimatedSlideContainer: FC<IAnimatedSlideContainerProps> = ({
         opacity: 0,
         x: x,
         y: y,
-        position: isExitAbsolut ? 'absolute' : undefined,
+        position: isExitAbsolute ? 'absolute' : undefined,
         transition: {
           duration: duration,
           ease: 'easeIn',
@@ -75,7 +86,7 @@ const AnimatedSlideContainer: FC<IAnimatedSlideContainerProps> = ({
       onAnimationStart={onAnimationStart}
       onAnimationComplete={onAnimationComplete}
       className={clsx(styles.container, className)}
-      style={{ '--pointer-events': pointerEvents, } as CSSProperties}
+      style={{ '--pointer-events': pointerEvents, ...style } as CSSProperties}
     >
       {children}
     </MotionComponent>

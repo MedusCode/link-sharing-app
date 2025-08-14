@@ -1,4 +1,4 @@
-import { CSSProperties, FC, MutableRefObject } from 'react';
+import { forwardRef, MutableRefObject, Ref } from 'react';
 
 import IDropDownItem from '@shared/types/drop-down-item.type';
 
@@ -10,53 +10,52 @@ export const getOptionId = (baseId: string, idx: number) => `${baseId}-opt-${idx
 export const getActiveDescendant = (baseId: string, idx: number | null) =>
   idx === null ? undefined : getOptionId(baseId, idx);
 
-interface Props {
-  items: IDropDownItem[];
+interface IOptionListProps<T> {
+  items: Array<IDropDownItem<T>>;
   baseId: string;
   optionRefs: MutableRefObject<(HTMLLIElement | null)[]>;
   selectedIdx: number | null;
   activeIdx: number | null;
   onItemFocus: (idx: number) => void;
   onItemClick: (idx: number) => void;
-  onItemBlur: (next: HTMLElement | null) => void;
-  maxHeight: number;
 }
 
-const OptionsList: FC<Props> = ({
-  items,
-  baseId,
-  optionRefs,
-  selectedIdx,
-  activeIdx,
-  onItemFocus,
-  onItemClick,
-  onItemBlur,
-  maxHeight
-}) => {
-
-  return (
-    <ul
-      className={styles.list}
-      id={baseId}
-      role="listbox"
-      aria-activedescendant={getActiveDescendant(baseId, activeIdx)}
-      style={{ '--max-height': `${maxHeight}px` } as CSSProperties}
-      tabIndex={-1}
-    >
-      {items.map((item, i) => (
-        <OptionItem
-          key={item.text}
-          item={item}
-          id={getOptionId(baseId, i)}
-          isSelected={i === selectedIdx}
-          liRef={(el) => (optionRefs.current[i] = el)}
-          onFocus={() => onItemFocus(i)}
-          onClick={() => onItemClick(i)}
-          onBlur={onItemBlur}
-        />
-      ))}
-    </ul>
-  );
-};
+const OptionsList = forwardRef(
+  <T,>(
+    {
+      items,
+      baseId,
+      optionRefs,
+      selectedIdx,
+      activeIdx,
+      onItemFocus,
+      onItemClick,
+    }: IOptionListProps<T>,
+    ref: Ref<HTMLUListElement>
+  ) => {
+    return (
+      <ul
+        ref={ref}
+        className={styles.list}
+        id={baseId}
+        role="listbox"
+        aria-activedescendant={getActiveDescendant(baseId, activeIdx)}
+        tabIndex={-1}
+      >
+        {items.map((item, i) => (
+          <OptionItem
+            key={item.text}
+            item={item}
+            id={getOptionId(baseId, i)}
+            isSelected={i === selectedIdx}
+            liRef={(el) => (optionRefs.current[i] = el)}
+            onFocus={() => onItemFocus(i)}
+            onClick={() => onItemClick(i)}
+          />
+        ))}
+      </ul>
+    );
+  }
+);
 
 export default OptionsList;

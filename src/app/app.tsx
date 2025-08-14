@@ -1,13 +1,16 @@
 import React, { FC } from 'react';
 
-import Router from 'app/router/router';
 import 'normalize.css';
 import './app.css'
+import RouterProvider from '@app/providers/router-provider';
+import StoreProvider from '@app/providers/store-provider';
 
 const App: FC = () => {
 
   return (
-    <Router />
+    <StoreProvider>
+      <RouterProvider />
+    </StoreProvider>
   );
 }
 

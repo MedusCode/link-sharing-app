@@ -5,7 +5,7 @@ interface ISlideAnimation {
   shift?: number;
   duration?: number;
   delay?: number;
-  isExitAbsolut?: boolean;
+  isExitAbsolute?: boolean;
 }
 
 export default ISlideAnimation;

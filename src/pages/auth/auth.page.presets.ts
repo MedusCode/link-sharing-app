@@ -1,6 +1,7 @@
 import { MOTION_ANIMATION_DELAY, MOTION_ANIMATION_DURATION } from '@animations/config/animation.constants';
 import IHeightAnimation from '@animations/types/height-animation.type';
 import IOutletAnimation from '@animations/types/outlet-animation.type';
+import ISlideAnimation from '@animations/types/slide-animation.type';
 
 export const authOutletAnimationPreset: IOutletAnimation = {
   mode: 'sync',
@@ -10,4 +11,9 @@ export const authOutletAnimationPreset: IOutletAnimation = {
 export const authHeightAnimationPreset: IHeightAnimation = {
   duration: MOTION_ANIMATION_DURATION * 2 + MOTION_ANIMATION_DELAY,
   ease: 'easeInOut',
+}
+
+export const authAnimationPreset: ISlideAnimation = {
+  side: 'left',
+  duration: MOTION_ANIMATION_DURATION,
 }

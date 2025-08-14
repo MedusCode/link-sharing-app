@@ -10,11 +10,12 @@
   padding: var(--containers-gap, 24px);
 }
 
-.header {
+.header_container {
   grid-area: header;
 }
 
 .main {
+  min-height: 0;
   grid-area: main;
   display: grid;
   grid-template-areas: "demo section";
@@ -22,6 +23,29 @@
   gap: var(--containers-gap, 24px);
 }
 
-.demo {
+.demo_container {
   grid-area: demo;
+}
+
+.demo {
+  height: 100%;
+}
+
+.section_container {
+  grid-area: section;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 146px;
+}
+
+.button {
+  user-select: none;
 }

@@ -1,48 +1,46 @@
-import React, { FC } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 import { Paths } from '@app/router/paths';
 import AuthPage from '@pages/auth/auth.page';
-import LoginPage from '@pages/auth/subpages/login/login.page';
-import SignupPage from '@pages/auth/subpages/signup/signup.page';
+import LoginPage from '@pages/auth/login/login.page';
+import SignupPage from '@pages/auth/signup/signup.page';
 import EditorPage from '@pages/editor/editor.page';
-import LinksPage from '@pages/editor/subpages/links/links.page';
-import ProfilePage from '@pages/editor/subpages/profile/profile.page';
+import LinksPage from '@pages/editor/links/links.page';
+import ProfilePage from '@pages/editor/profile/profile.page';
+import RootPage from '@pages/root/root.page';
 
 const router = createBrowserRouter([
   {
-    element: <EditorPage />,
+    element: <RootPage />,
     children: [
       {
-        path: Paths.EDITOR.LINKS,
-        element: <LinksPage />,
+        element: <EditorPage />,
+        children: [
+          {
+            path: Paths.EDITOR.LINKS,
+            element: <LinksPage />,
+          },
+          {
+            path: Paths.EDITOR.PROFILE,
+            element: <ProfilePage />,
+          },
+        ]
       },
       {
-        path: Paths.EDITOR.PROFILE,
-        element: <ProfilePage />,
+        element: <AuthPage />,
+        children: [
+          {
+            path: Paths.AUTH.LOGIN,
+            element: <LoginPage />,
+          },
+          {
+            path: Paths.AUTH.SIGNUP,
+            element: <SignupPage />,
+          },
+        ],
       },
     ]
-  },
-  {
-    element: <AuthPage />,
-    children: [
-      {
-        path: Paths.AUTH.LOGIN,
-        element: <LoginPage />,
-      },
-      {
-        path: Paths.AUTH.SIGNUP,
-        element: <SignupPage />,
-      },
-    ],
-  },
+  }
 ]);
 
-const Router: FC = () => {
-
-  return (
-    <RouterProvider router={router} />
-  );
-}
-
-export default Router;
+export default router;

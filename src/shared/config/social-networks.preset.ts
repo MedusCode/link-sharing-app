@@ -12,107 +12,107 @@ import { ReactComponent as StackOverflowIcon } from '@shared/assets/images/icon-
 import { ReactComponent as TwitchIcon } from '@shared/assets/images/icon-twitch.svg';
 import { ReactComponent as TwitterIcon } from '@shared/assets/images/icon-twitter.svg';
 import { ReactComponent as YouTubeIcon } from '@shared/assets/images/icon-youtube.svg';
-import ISocialNetwork from '@shared/types/social-networks.type';
+import { ISocialNetwork } from '@shared/types/social-network.type';
 
-const socialNetworksPreset: ISocialNetwork[] = [
-  {
+export const socialNetworksPreset = {
+  github: {
     name: 'GitHub',
-    value: 'github',
-    icon: GitHubIcon,
+    IconElement: GitHubIcon,
     color: '#1A1A1A',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://github.com/example',
   },
-  {
+  twitter: {
     name: 'Twitter',
-    value: 'twitter',
-    icon: TwitterIcon,
+    IconElement: TwitterIcon,
     color: '#43B7E9',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://twitter.com/example',
   },
-  {
+  linkedin: {
     name: 'LinkedIn',
-    value: 'linkedin',
-    icon: LinkedInIcon,
+    IconElement: LinkedInIcon,
     color: '#2D68FF',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://linkedin.com/in/example',
   },
-  {
+  youtube: {
     name: 'YouTube',
-    value: 'youtube',
-    icon: YouTubeIcon,
+    IconElement: YouTubeIcon,
     color: '#EE3939',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://youtube.com/example',
   },
-  {
+  facebook: {
     name: 'Facebook',
-    value: 'facebook',
-    icon: FacebookIcon,
+    IconElement: FacebookIcon,
     color: '#2442AC',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://facebook.com/example',
   },
-  {
+  twitch: {
     name: 'Twitch',
-    value: 'twitch',
-    icon: TwitchIcon,
+    IconElement: TwitchIcon,
     color: '#EE3FC8',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://twitter.com/example',
   },
-  {
+  devto: {
     name: 'Dev.to',
-    value: 'devto',
-    icon: DevToIcon,
+    IconElement: DevToIcon,
     color: '#333333',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://dev.to/example',
   },
-  {
+  codewars: {
     name: 'Codewars',
-    value: 'codewars',
-    icon: CodewarsIcon,
+    IconElement: CodewarsIcon,
     color: '#8A1A50',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://codewars.com/example',
   },
-  {
+  codepen: {
     name: 'Codepen',
-    value: 'codepen',
-    icon: CodepenIcon,
+    IconElement: CodepenIcon,
     color: '#302267',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://codepen.com/example',
   },
-  {
+  freecodecamp: {
     name: 'freeCodeCamp',
-    value: 'freecodecamp',
-    icon: FreeCodeCampIcon,
+    IconElement: FreeCodeCampIcon,
     color: '#0A0A21',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://freecodecamp.com/example',
   },
-  {
+  gitlab: {
     name: 'GitLab',
-    value: 'gitlab',
-    icon: GitLabIcon,
+    IconElement: GitLabIcon,
     color: '#EB4925',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://gitlab.com/example',
   },
-  {
+  hashnode: {
     name: 'Hashnode',
-    value: 'hashnode',
-    icon: HashnodeIcon,
+    IconElement: HashnodeIcon,
     color: '#0330D1',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://hashnode.com/example',
   },
-  {
+  stackoverflow: {
     name: 'Stack Overflow',
-    value: 'stackoverflow',
-    icon: StackOverflowIcon,
+    IconElement: StackOverflowIcon,
     color: '#EC7100',
-    isColorLight: false
+    isColorLight: false,
+    example: 'https://stackoverflow.com/example',
   },
-  {
+  frontendmentor: {
     name: 'Frontend Mentor',
-    value: 'frontendmentor',
-    icon: FrontendMentorIcon,
+    IconElement: FrontendMentorIcon,
     color: '#FFFFFF',
-    isColorLight: true
+    isColorLight: true,
+    example: 'https://frontendmentor.io/example',
   },
-]
+} as const satisfies Record<string, ISocialNetwork>;
 
 export default socialNetworksPreset;

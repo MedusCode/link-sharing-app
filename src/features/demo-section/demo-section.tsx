@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { FC, HTMLAttributes } from 'react';
 
 import Card from '@shared/components/card/card';
+import SectionContainer from '@shared/components/section-container/section-container';
 
 import styles from './demo-section.module.css';
 
@@ -14,11 +15,11 @@ const DemoSection: FC<IDemoSectionProps> = ({
 }) => {
 
   return (
-    <section className={clsx(styles.container, className)}>
+    <SectionContainer className={clsx(styles.container, className)}>
       <div className={styles.phone}>
         <Card />
       </div>
-    </section>
+    </SectionContainer>
   );
 }
 

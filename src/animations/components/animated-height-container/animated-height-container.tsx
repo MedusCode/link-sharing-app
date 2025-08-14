@@ -35,7 +35,6 @@ const AnimatedHeightContainer: FC<AnimatedHeightContainerProps> = ({
 
   return (
     <MotionComponent
-      layout="size"
       animate={{ height }}
       transition={{ duration, ease }}
       initial={initial}

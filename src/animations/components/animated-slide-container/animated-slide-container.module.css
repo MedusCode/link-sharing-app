@@ -1,4 +1,5 @@
 .container {
   --pointer-events: auto;
   pointer-events: var(--pointer-events);
+  min-height: 0;
 }

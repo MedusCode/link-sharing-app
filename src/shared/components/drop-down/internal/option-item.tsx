@@ -1,30 +1,27 @@
 import clsx from 'clsx';
-import { FC } from 'react';
 
 import IDropDownItem from '@shared/types/drop-down-item.type';
 
 import styles from '../drop-down.module.css';
 
 
-interface Props {
-  item: IDropDownItem;
+interface IOptionItemProps<T> {
+  item: IDropDownItem<T>;
   id: string;
   isSelected: boolean;
   liRef: (el: HTMLLIElement | null) => void;
   onFocus: () => void;
   onClick: () => void;
-  onBlur: (next: HTMLElement | null) => void;
 }
 
-const OptionItem: FC<Props> = ({
+const OptionItem = <T,>({
   item,
   id,
   isSelected,
   liRef,
   onFocus,
   onClick,
-  onBlur
-}) => {
+}: IOptionItemProps<T>) => {
   const { IconElement, text } = item;
 
   return (
@@ -37,11 +34,10 @@ const OptionItem: FC<Props> = ({
       tabIndex={0}
       onFocus={onFocus}
       onClick={onClick}
-      onBlur={(e) => onBlur(e.relatedTarget as HTMLElement | null)}
     >
       <div className={styles.item_content}>
         {IconElement ? <IconElement className={styles.icon} /> : null}
-        <span className={styles.label}>{isSelected ? `${text} (Selected)` : text}</span>
+        <span className={styles.text}>{isSelected ? `${text} (Selected)` : text}</span>
       </div>
     </li>
   );

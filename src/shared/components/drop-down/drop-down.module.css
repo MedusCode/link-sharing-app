@@ -1,6 +1,19 @@
 .container {
-  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  composes: body_small_text from '@shared/styles/variables.css';
+  cursor: pointer;
   width: fit-content;
+}
+
+.drop_down {
+  position: relative;
+  width: 100%;
 }
 
 .button {
@@ -13,8 +26,7 @@
   align-items: center;
   gap: 12px;
   padding: 11px 16px;
-  min-width: 480px;
-  width: max-content;
+  width: 100%;
   transition: 0.1s ease-in-out;
   cursor: pointer;
 }
@@ -38,24 +50,24 @@
 
 .list {
   --max-height: 200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  min-width: 480px;
-  width: max-content;
   list-style: none;
   overflow-y: auto;
   max-height: var(--max-height, 200px);
 }
 
 .list_container {
+  width: 100%;
   box-shadow: var(--shadow, 0px 0px 32px 0px rgba(0, 0, 0, 0.10));
   border-radius: var(--element-border-radius, 8px);
   background-color: var(--primary-bg-color, #FFFFFF);
   border: var(--border, 1px solid #D9D9D9);
   overflow: auto;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: calc(100% + 8px);
   z-index: 5;
@@ -88,16 +100,12 @@
   background-color: var(--tertiary-color, #EFEBFF);
 }
 
-.item__selected .label {
+.item__selected .text {
   color: var(--primary-color, #633CFF);
 }
 
 .item__selected .icon path {
   fill: var(--primary-color, #633CFF);
-}
-
-.item:last-child {
-  border: none;
 }
 
 .item_content {
@@ -107,5 +115,9 @@
   align-items: center;
   gap: 12px;
   padding: 12px 0;
+}
+
+.item:last-child .item_content {
+  border: none;
 }
 
