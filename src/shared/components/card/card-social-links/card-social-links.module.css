@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+div.link_placeholder {
+  width: 237px;
+  height: 44px;
+  border-radius: var(--element-border-radius, 8px);
+}

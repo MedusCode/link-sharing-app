@@ -1,0 +1,18 @@
+body {
+  font-family: "Instrument Sans", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--secondary-bg-color, #FAFAFA);
+}
+
+#root {
+  width: 100vw;
+  max-width: 1700px;
+  margin: 0 auto;
+  height: 100dvh;
+  background-color: var(--secondary-bg-color, #FAFAFA);
+}
+
+svg #fill_exception path {
+  fill: #FFFFFF;
+}

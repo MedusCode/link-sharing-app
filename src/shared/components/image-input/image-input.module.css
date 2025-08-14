@@ -1,0 +1,70 @@
+.container {
+  position: relative;
+  display: block;
+  width: 193px;
+  height: 193px;
+  overflow: hidden;
+  border-radius: var(--container-border-radius, 12px);
+  cursor: pointer;
+  background-color: var(--tertiary-color, #EFEBFF);
+}
+
+.container__loaded::after {
+  position: absolute;
+  display: block;
+  content: '';
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: .5;
+  z-index: 2;
+}
+
+.image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}
+
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+}
+
+.caption_image {
+  width: 40px;
+  height: 40px;
+}
+
+.caption_image__loaded path {
+  fill: var(--tertiary-text-color, #FFFFFF);
+}
+
+.caption_text {
+  composes: heading_small_text from '@shared/styles/variables.css';
+  color: var(--primary-color, #633CFF);
+}
+
+.caption_text__loaded {
+  color: var(--tertiary-text-color, #FFFFFF);
+}

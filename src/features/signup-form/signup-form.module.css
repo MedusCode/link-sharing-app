@@ -1,0 +1,10 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.validation_hint {
+  composes: body_small_text from '@shared/styles/variables.css';
+  color: var(--secondary-text-color, #737373);
+}

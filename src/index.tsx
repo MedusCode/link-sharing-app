@@ -1,40 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'normalize.css';
-import './styles/fonts.css';
-import './styles/index.css';
-import './assets/fonts/InstrumentSans.ttf'
-import './assets/fonts/InstrumentSans-Italic.ttf'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Login from './pages/login/login';
-import Signup from './pages/signup/signup';
-import Root from './pages/root/root';
-import Authorization from './pages/authorization/authorization';
+
+import App from './app/app';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-// TODO: Pages in separate Object
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Authorization />,
-    children: [
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/signup',
-        element: <Signup />,
-      }
-    ]
-  },
-]);
-
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );

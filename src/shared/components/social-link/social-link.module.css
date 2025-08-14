@@ -1,0 +1,48 @@
+.button {
+  --bg-color: var(--primary-color, #633CFF);
+  composes: body_medium_text from '@shared/styles/variables.css';
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+  max-width: 237px;
+  border-radius: var(--element-border-radius, 8px);
+  color: var(--tertiary-text-color, #FFFFFF);
+  text-decoration: none;
+  background-color: var(--bg-color);
+}
+
+.button .icon path {
+  fill: var(--secondary-icon-color, #FFFFFF);
+}
+
+.button__light {
+  color: var(--primary-text-color, #333333);
+  border: var(--border, 1px solid #D9D9D9);
+}
+
+.button__light .icon path {
+  fill: var(--secondary-text-color, #737373);
+}
+
+.button__light .arrow path {
+  fill: var(--secondary-text-color, #737373);
+}
+
+.container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+}
+
+.arrow {
+  height: 16px;
+  width: 16px;
+}

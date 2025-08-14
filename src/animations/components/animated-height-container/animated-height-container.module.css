@@ -1,0 +1,13 @@
+.outer_wrapper {
+  --pointer-events: auto;
+  pointer-events: var(--pointer-events);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

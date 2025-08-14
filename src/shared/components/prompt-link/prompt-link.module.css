@@ -1,0 +1,4 @@
+.text {
+  composes: body_medium_text from '@shared/styles/variables.css';
+  color: var(--secondary-text-color, #737373);
+}
