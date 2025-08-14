@@ -8,18 +8,18 @@ import IPromptLinkContent from '@shared/types/prompt-link-content.type';
 import ISectionHeaderContent from '@shared/types/section-heading-content.type';
 
 
-export const loginSectionHeaderPreset: ISectionHeaderContent = {
+export const loginSectionHeaderPreset = {
   heading: 'Login',
   description: 'Add your details below to get back into the app',
-}
+} as const satisfies ISectionHeaderContent
 
-export const loginPromptLinkPreset: IPromptLinkContent = {
+export const loginPromptLinkPreset = {
   text: 'Don’t have an account?',
   linkText: 'Create account',
   to: Paths.AUTH.SIGNUP,
-}
+} as const satisfies IPromptLinkContent
 
-export const loginFormPreset: ILoginFormContent = {
+export const loginFormPreset = {
   inputs: {
     email: {
       label: 'Email address',
@@ -35,10 +35,10 @@ export const loginFormPreset: ILoginFormContent = {
     },
   },
   submitText: 'Login'
-}
+} as const satisfies ILoginFormContent
 
-export const loginAnimationPreset: ISlideAnimation = {
+export const loginAnimationPreset = {
   side: 'left',
   delay: MOTION_ANIMATION_DURATION + MOTION_ANIMATION_DELAY,
   isExitAbsolute: true
-}
+} as const satisfies ISlideAnimation

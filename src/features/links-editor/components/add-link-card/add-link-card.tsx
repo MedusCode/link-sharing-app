@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import React, { FC, HTMLAttributes, MouseEvent, useEffect, useMemo, useState } from 'react';
+import { FC, HTMLAttributes, MouseEvent, useEffect, useMemo, useState } from 'react';
 
-import { ILinkItem } from '@features/links-editor/model/types';
+import addLinkCardPreset from '@features/links-editor/components/add-link-card/add-link-card.preset';
+import { useLinksForm } from '@features/links-editor/context/form-context';
 import { ReactComponent as DragAndDropIcon } from '@shared/assets/images/icon-drag-and-drop.svg';
-import { ReactComponent as LinkIcon } from '@shared/assets/images/icon-link.svg';
 import DropDown from '@shared/components/drop-down/drop-down';
 import TextButton from '@shared/components/text-button/text-button';
 import TextInput from '@shared/components/text-input/text-input';
@@ -11,12 +11,12 @@ import { InputHints } from '@shared/config/forms.constants';
 import SocialNetworksPreset from '@shared/config/social-networks.preset';
 import useTextInputs from '@shared/hooks/use-text-inputs';
 import IDropDownItem from '@shared/types/drop-down-item.type';
+import { ILinkItem } from '@shared/types/link-item.type';
 import { TSocialId } from '@shared/types/social-id.type';
 import ITextInputHintsConfig from '@shared/types/text-input-hints-config.type';
-import { isNotEmpty, isValidEmail } from '@shared/utils/validation';
+import { isNotEmpty, isValidUrl } from '@shared/utils/validation';
 
 import styles from './add-link-card.module.css';
-
 
 interface IAddLinkCardProps {
   link: ILinkItem
@@ -36,6 +36,8 @@ const hintsConfig: ITextInputHintsConfig = {
   }
 }
 
+const { headingNumText, linkInput, removeButtonText, platformDropDown } = addLinkCardPreset;
+
 const AddLinkCard: FC<IAddLinkCardProps> = ({
   link,
   availableSocialIds,
@@ -45,69 +47,75 @@ const AddLinkCard: FC<IAddLinkCardProps> = ({
   className = ''
 }) => {
   const { id: socialId, order, href } = link;
+  const { register } = useLinksForm();
   const {
     values,
     hints,
     onChange,
-    // onSubmit
+    onSubmit
   } = useTextInputs({
     link: {
       initialValue: href,
       hints: hintsConfig,
       validationFunc: {
         [InputHints.NOT_EMPTY]: isNotEmpty,
-        [InputHints.VALID_EMAIL]: isValidEmail,
+        [InputHints.VALID_URL]: isValidUrl,
       }
     }
   });
   const [ dropDownValue, setDropDownValue ] = useState<TSocialId | null>(socialId);
 
   const dropDownItems: Array<IDropDownItem<TSocialId>> = useMemo(() => {
-    const ids = [socialId, ...availableSocialIds];
+    const ids = [ socialId, ...availableSocialIds ];
     return ids.map((id) => ({
       value: id,
       text: SocialNetworksPreset[id].name,
       IconElement: SocialNetworksPreset[id].IconElement,
     }));
-  }, [socialId, availableSocialIds]);
+  }, [ socialId, availableSocialIds ]);
 
-  const onRemoveClick = (evt: MouseEvent<HTMLButtonElement>)=> {
+  const handleRemoveClick = (evt: MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
     removeLink(socialId);
   }
 
   useEffect(() => {
     changeLinkHref(socialId, values.link)
-  }, [values.link])
+  }, [ values.link ])
 
   useEffect(() => {
     if (dropDownValue && socialId !== dropDownValue) {
       changeLinkPlatform(socialId, dropDownValue)
     }
-  }, [dropDownValue])
+  }, [ dropDownValue ])
+
+  useEffect(() => {
+    return register(link.id, () => onSubmit());
+  }, [register, link.id, onSubmit]);
 
   return (
     <li className={clsx(styles.container, className)} key={`${socialId}-${order}2`}>
       <div className={styles.header}>
         <div className={styles.heading}>
           <DragAndDropIcon />
-          <span>{`Link #${order + 1}`}</span>
+          <span>{`${headingNumText}${order + 1}`}</span>
         </div>
-        <TextButton type={'button'} onClick={onRemoveClick}>Remove</TextButton>
+        <TextButton type={'button'} onClick={handleRemoveClick}>{removeButtonText}</TextButton>
       </div>
       <DropDown
         items={dropDownItems}
-        label={'Platform'}
+        label={platformDropDown.label}
         value={dropDownValue}
         onChange={setDropDownValue}
       />
       <TextInput
         value={values.link}
         onChange={onChange.link}
-        label={'Link'}
+        label={linkInput.label}
         name={'link'}
-        IconElement={LinkIcon}
-        placeholder={`e.g. ${SocialNetworksPreset[socialId!]?.example || 'https://exmaple.com/example'}`}
+        type={linkInput.type}
+        IconElement={linkInput.IconElement}
+        placeholder={`e.g. ${SocialNetworksPreset[socialId!]?.example || linkInput.placeholder}`}
         errorMessage={hints.link || undefined}
       />
     </li>

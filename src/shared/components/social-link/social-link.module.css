@@ -8,10 +8,12 @@
   padding: 16px;
   width: 100%;
   max-width: 237px;
+  height: 44px;
   border-radius: var(--element-border-radius, 8px);
   color: var(--tertiary-text-color, #FFFFFF);
   text-decoration: none;
   background-color: var(--bg-color);
+  user-select: none;
 }
 
 .button .icon path {

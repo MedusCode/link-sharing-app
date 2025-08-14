@@ -8,4 +8,14 @@ export const isValidEmail = (value: string) =>
 export const isPasswordLengthValid = (value: string) => value.length >= MIN_PASSWORD_LENGTH;
 
 export const isMatchField = (fieldName: string, isEmptyAllowed: boolean = false) =>
-  (value: string, values: Record<string, string>) => value === values[fieldName] && (isEmptyAllowed || isNotEmpty(value));
+  (value: string, values: Record<string, string>) =>
+    value === values[fieldName] && (isEmptyAllowed || isNotEmpty(value));
+
+export function isValidUrl(url: string): boolean {
+  try {
+    const u = new URL(url);
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}

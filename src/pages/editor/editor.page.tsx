@@ -3,7 +3,10 @@ import { useLocation } from 'react-router-dom';
 
 import AnimatedOutlet from '@animations/components/animated-outlet/animated-outlet';
 import AnimatedSlideContainer from '@animations/components/animated-slide-container/animated-slide-container';
+import { useAppSelector } from '@app/store/hooks';
+import { RootState } from '@app/store/types';
 import DemoSection from '@features/demo-section/demo-section';
+import { createLinksEditorSelectors } from '@features/links-editor/model/selectors';
 import Button from '@shared/components/button/button';
 import HeaderContainer from '@shared/components/header-container/header-container';
 import Logo from '@shared/components/logo/logo';
@@ -19,11 +22,15 @@ import {
   editorSectionAnimationPreset
 } from './editor.page.presets';
 
+const selectors = createLinksEditorSelectors((s: RootState) => s.linksEditor);
+// const actions = linksEditorActions;
 
 const { tabs, button } = editorNavigationPreset;
 
 const EditorPage: FC = () => {
   const location = useLocation()
+  // const dispatch = useAppDispatch();
+  const links = useAppSelector(selectors.selectAll);
 
   const tabItems = useMemo(() => {
     return tabs.map((tab): ITabItem => ({
@@ -45,7 +52,7 @@ const EditorPage: FC = () => {
       </AnimatedSlideContainer>
       <main className={styles.main}>
         <AnimatedSlideContainer animation={editorDemoAnimationPreset} className={styles.demo_container}>
-          <DemoSection className={styles.demo} />
+          <DemoSection links={links} className={styles.demo} />
         </AnimatedSlideContainer>
         <AnimatedSlideContainer animation={editorSectionAnimationPreset} className={styles.section_container}>
           <AnimatedOutlet animation={editorOutletAnimationPreset} />

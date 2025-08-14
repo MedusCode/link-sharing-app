@@ -9,18 +9,18 @@ import IPromptLinkContent from '@shared/types/prompt-link-content.type';
 import ISectionHeaderContent from '@shared/types/section-heading-content.type';
 
 
-export const signupSectionHeaderPreset: ISectionHeaderContent = {
+export const signupSectionHeaderPreset = {
   heading: 'Create account',
   description: 'Let’s get you started sharing your links!',
-}
+} as const satisfies ISectionHeaderContent
 
-export const signupPromptLinkPreset: IPromptLinkContent = {
+export const signupPromptLinkPreset = {
   text: 'Already have an account?',
   linkText: 'Login',
   to: Paths.AUTH.LOGIN
-}
+} as const satisfies IPromptLinkContent
 
-export const signupFormPreset: ISignupFormContent = {
+export const signupFormPreset = {
   inputs: {
     email: {
       label: 'Email address',
@@ -43,10 +43,10 @@ export const signupFormPreset: ISignupFormContent = {
   },
   hint: `Password must contain at least ${MIN_PASSWORD_LENGTH} characters`,
   submitText: 'Create new account'
-}
+} as const satisfies ISignupFormContent
 
-export const signupAnimationPreset: ISlideAnimation = {
+export const signupAnimationPreset = {
   side: 'right',
   delay: MOTION_ANIMATION_DURATION + MOTION_ANIMATION_DELAY,
   isExitAbsolute: true
-}
+} as const satisfies ISlideAnimation
