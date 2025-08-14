@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import React, { FC, HTMLAttributes, MouseEvent, useEffect, useMemo, useState } from 'react';
 
+import addLinkCardPreset from '@features/links-editor/components/add-link-card/add-link-card.preset';
 import { ILinkItem } from '@features/links-editor/model/types';
 import { ReactComponent as DragAndDropIcon } from '@shared/assets/images/icon-drag-and-drop.svg';
-import { ReactComponent as LinkIcon } from '@shared/assets/images/icon-link.svg';
 import DropDown from '@shared/components/drop-down/drop-down';
 import TextButton from '@shared/components/text-button/text-button';
 import TextInput from '@shared/components/text-input/text-input';
@@ -16,7 +16,6 @@ import ITextInputHintsConfig from '@shared/types/text-input-hints-config.type';
 import { isNotEmpty, isValidEmail } from '@shared/utils/validation';
 
 import styles from './add-link-card.module.css';
-
 
 interface IAddLinkCardProps {
   link: ILinkItem
@@ -35,6 +34,8 @@ const hintsConfig: ITextInputHintsConfig = {
     onChange: true,
   }
 }
+
+const { headingNumText, linkInput, removeButtonText, platformDropDown } = addLinkCardPreset;
 
 const AddLinkCard: FC<IAddLinkCardProps> = ({
   link,
@@ -91,23 +92,24 @@ const AddLinkCard: FC<IAddLinkCardProps> = ({
       <div className={styles.header}>
         <div className={styles.heading}>
           <DragAndDropIcon />
-          <span>{`Link #${order + 1}`}</span>
+          <span>{`${headingNumText}${order + 1}`}</span>
         </div>
-        <TextButton type={'button'} onClick={onRemoveClick}>Remove</TextButton>
+        <TextButton type={'button'} onClick={onRemoveClick}>{removeButtonText}</TextButton>
       </div>
       <DropDown
         items={dropDownItems}
-        label={'Platform'}
+        label={platformDropDown.label}
         value={dropDownValue}
         onChange={setDropDownValue}
       />
       <TextInput
         value={values.link}
         onChange={onChange.link}
-        label={'Link'}
+        label={linkInput.label}
         name={'link'}
-        IconElement={LinkIcon}
-        placeholder={`e.g. ${SocialNetworksPreset[socialId!]?.example || 'https://exmaple.com/example'}`}
+        type={linkInput.type}
+        IconElement={linkInput.IconElement}
+        placeholder={`e.g. ${SocialNetworksPreset[socialId!]?.example || linkInput.placeholder}`}
         errorMessage={hints.link || undefined}
       />
     </li>

@@ -1,8 +1,8 @@
 import { FC, HTMLAttributes } from 'react';
 
+import styles from '@features/demo-section/card/profile-section/card-profile.module.css';
 import Placeholder from '@shared/components/placeholder/placeholder';
 
-import styles from './card-profile.module.css';
 
 interface ICardProfileProps {
   className?: HTMLAttributes<HTMLElement>['className'];

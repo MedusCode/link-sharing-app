@@ -34,22 +34,22 @@ export const editorNavigationPreset: IEditorNavigation = {
   },
 }
 
-export const editorOutletAnimationPreset: IOutletAnimation = {
+export const editorOutletAnimationPreset = {
   mode: 'wait',
   initial: false,
-}
+} as const satisfies IOutletAnimation
 
-export const editorHeaderAnimationPreset: ISlideAnimation = {
+export const editorHeaderAnimationPreset = {
   side: 'up',
   duration: MOTION_ANIMATION_DURATION,
-}
+} as const satisfies ISlideAnimation
 
-export const editorDemoAnimationPreset: ISlideAnimation = {
+export const editorDemoAnimationPreset = {
   side: 'left',
   duration: MOTION_ANIMATION_DURATION,
-}
+} as const satisfies ISlideAnimation
 
-export const editorSectionAnimationPreset: ISlideAnimation = {
+export const editorSectionAnimationPreset = {
   side: 'right',
   duration: MOTION_ANIMATION_DURATION,
-}
+} as const satisfies ISlideAnimation

@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import { FC, HTMLAttributes, useState } from 'react';
 
+import styles from 'features/demo-section/card/card-social-links/card-social-links.module.css';
+
 import Placeholder from '@shared/components/placeholder/placeholder';
 
-import styles from './card-social-links.module.css';
 
 interface ICardSocialLinksProps {
   className?: HTMLAttributes<HTMLElement>['className'];

@@ -3,6 +3,7 @@ import { FC, HTMLAttributes } from 'react';
 
 import AddLinksList from '@features/links-editor/components/add-links-list/add-links-list';
 import ListPlaceholder from '@features/links-editor/components/list-placeholder/list-placeholder';
+import linksEditorButtonsPreset from '@features/links-editor/links-editor.preset';
 import { ILinkItem } from '@features/links-editor/model/types';
 import Button from '@shared/components/button/button';
 import { TSocialId } from '@shared/types/social-id.type';
@@ -18,6 +19,8 @@ interface ILinksEditorProps {
   addLink: () => void;
   className?: HTMLAttributes<HTMLElement>['className'];
 }
+
+const { addButtonText, saveButtonText } = linksEditorButtonsPreset;
 
 const LinksEditor: FC<ILinksEditorProps> = ({
   links,
@@ -37,7 +40,7 @@ const LinksEditor: FC<ILinksEditorProps> = ({
         appearance={'secondary'}
         onClick={addLink}
         disabled={availableSocialIds.length === 0}
-      >+ Add new link</Button>
+      >{addButtonText}</Button>
       {
         isListEmpty
           ?
@@ -53,7 +56,7 @@ const LinksEditor: FC<ILinksEditorProps> = ({
           />
       }
       <div className={styles.footer}>
-        <Button className={styles.save_button} disabled={isListEmpty}>Save</Button>
+        <Button className={styles.save_button} disabled={isListEmpty}>{saveButtonText}</Button>
       </div>
     </div>
   );
