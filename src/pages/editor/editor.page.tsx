@@ -7,6 +7,7 @@ import { useAppSelector } from '@app/store/hooks';
 import { RootState } from '@app/store/types';
 import Demo from '@features/demo/demo';
 import { createLinksEditorSelectors } from '@features/links-editor/model/selectors';
+import { createProfileEditorSelectors } from '@features/profile-editor/model/selectors';
 import Button from '@shared/components/button/button';
 import HeaderContainer from '@shared/components/header-container/header-container';
 import Logo from '@shared/components/logo/logo';
@@ -22,13 +23,19 @@ import {
   editorSectionAnimationPreset
 } from './editor.page.presets';
 
-const selectors = createLinksEditorSelectors((s: RootState) => s.linksEditor);
+const linksEditorSelectors = createLinksEditorSelectors(
+  (s: RootState) => s.linksEditor
+);
+const profileEditorSelectors = createProfileEditorSelectors(
+  (s: RootState) => s.profileEditor
+);
 
 const { tabs, button } = editorNavigationPreset;
 
 const EditorPage: FC = () => {
   const location = useLocation()
-  const links = useAppSelector(selectors.selectAll);
+  const links = useAppSelector(linksEditorSelectors.selectAll);
+  const profile = useAppSelector(profileEditorSelectors.selectProfile);
 
   const tabItems = useMemo(() => {
     return tabs.map((tab): ITabItem => ({
@@ -50,7 +57,7 @@ const EditorPage: FC = () => {
       </AnimatedSlideContainer>
       <main className={styles.main}>
         <AnimatedSlideContainer animation={editorDemoAnimationPreset} className={styles.demo_container}>
-          <Demo links={links} className={styles.demo} />
+          <Demo className={styles.demo} profile={profile} links={links} />
         </AnimatedSlideContainer>
         <AnimatedSlideContainer animation={editorSectionAnimationPreset} className={styles.section_container}>
           <AnimatedOutlet animation={editorOutletAnimationPreset} />

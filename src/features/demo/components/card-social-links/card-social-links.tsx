@@ -19,11 +19,12 @@ const CardSocialLinks: FC<ICardSocialLinksProps> = ({
 }) => {
 
   return (
+    <div className={styles.container}>
     <ul className={clsx(styles.list, className)}>
       {links.map((link) => {
         const { name, IconElement, color, isColorLight } = socialNetworksPreset[link.id];
         return (
-          <li className={styles.listElement} key={`${link.id}-${link.order}`}>
+          <li className={styles.list_element} key={`${link.id}-${link.order}`}>
             <SocialLink
               href={link.href}
               IconElement={IconElement}
@@ -37,11 +38,12 @@ const CardSocialLinks: FC<ICardSocialLinksProps> = ({
       })}
 
       {Array.from({ length: Math.max(0, 5 - links.length) }).map((_, idx) => (
-        <li className={styles.listElement} key={`placeholder-${idx}`}>
+        <li className={styles.list_element} key={`placeholder-${idx}`}>
           <Placeholder className={styles.link_placeholder} />
         </li>
       ))}
     </ul>
+    </div>
   );
 }
 

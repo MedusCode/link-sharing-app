@@ -1,5 +1,5 @@
 export interface IProfile {
-  img: string | null;
+  img?: string | null;
   firstName: string;
   lastName: string;
   email?: string;

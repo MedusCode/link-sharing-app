@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IProfile } from '@shared/types/profile.types';
 
 const initialState: IProfile = {
-  img: null,
+  img: '',
   firstName: '',
   lastName: '',
   email: '',
@@ -19,7 +19,7 @@ export const profileEditorSlice = createSlice({
     profilePatched(state, { payload }: PayloadAction<Partial<IProfile>>) {
       Object.assign(state, payload);
     },
-    imgUpdated(state, { payload }: PayloadAction<string | null>) {
+    imgUpdated(state, { payload }: PayloadAction<string>) {
       state.img = payload;
     },
     firstNameUpdated(state, { payload }: PayloadAction<string>) {

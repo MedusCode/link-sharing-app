@@ -6,14 +6,17 @@ import styles from 'features/demo/demo.module.css';
 import Card from '@features/demo/components/card/card';
 import SectionContainer from '@shared/components/section-container/section-container';
 import { ILinkItem } from '@shared/types/link-item.type';
+import { IProfile } from '@shared/types/profile.types';
 
 
 interface IDemoSectionProps {
+  profile: IProfile;
   links: ILinkItem[];
   className?: HTMLAttributes<HTMLElement>['className'];
 }
 
 const Demo: FC<IDemoSectionProps> = ({
+  profile,
   links,
   className = ''
 }) => {
@@ -21,7 +24,7 @@ const Demo: FC<IDemoSectionProps> = ({
   return (
     <SectionContainer className={clsx(styles.container, className)}>
       <div className={styles.phone}>
-        <Card links={links} />
+        <Card profile={profile} links={links} />
       </div>
     </SectionContainer>
   );

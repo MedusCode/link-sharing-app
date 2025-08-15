@@ -100,7 +100,7 @@ const ImageInput = forwardRef<ImageInputHandle, ImageInputProps>(function ImageI
   const loaded = !!previewUrl;
 
   return (
-    <label className={clsx(styles.container, { [styles.container__loaded]: loaded }, className)}>
+    <label className={clsx(styles.container, { [styles.container__loaded]: loaded }, className)} tabIndex={0}>
       {loaded && <img className={styles.image} ref={imgRef} alt={notFoundText} />}
       <div className={styles.caption}>
         <IconUploadImage className={clsx(styles.caption_image, { [styles.caption_image__loaded]: loaded })} />
@@ -111,6 +111,7 @@ const ImageInput = forwardRef<ImageInputHandle, ImageInputProps>(function ImageI
       <input
         id={id}
         ref={fileInputRef}
+        tabIndex={-1}
         className={styles.input}
         type="file"
         name={name}

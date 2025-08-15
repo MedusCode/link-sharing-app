@@ -1,13 +1,22 @@
+.container {
+  border-radius: var(--element-border-radius, 8px) var(--element-border-radius, 8px) 46px 46px;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
 .list {
+  max-height: 330px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 0 23px;
   list-style: none;
   margin: 0;
-  flex: 1 1 auto;
   overflow: auto;
-  border-radius: var(--element-border-radius, 8px);
-  padding: 0 23px;
+}
+
+.list_element:last-child {
+  margin-bottom: 30px;
 }
 
 div.link_placeholder {
@@ -15,3 +24,5 @@ div.link_placeholder {
   height: 44px;
   border-radius: var(--element-border-radius, 8px);
 }
+
+
