@@ -27,13 +27,11 @@ const LinksPage: FC = () => {
   const removeLink = (socialId: TSocialId) =>
     dispatch(actions.linkRemoved({ id: socialId }));
 
-  const changeLinkHref = (socialId: TSocialId, href: string) => {
+  const changeLinkHref = (socialId: TSocialId, href: string) =>
     dispatch(actions.linkHrefUpdated({ id: socialId, href: href }));
-  }
 
-  const changeLinkPlatform = (socialId: TSocialId, newSocialId: TSocialId) => {
+  const changeLinkPlatform = (socialId: TSocialId, newSocialId: TSocialId) =>
     dispatch(actions.linkPlatformUpdated({ id: socialId, newId: newSocialId }));
-  }
 
   return (
     <SectionAnimation className={styles.container} animation={linksAnimationPreset}>

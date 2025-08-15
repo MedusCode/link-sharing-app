@@ -2,3 +2,17 @@
   height: 100%;
   display: flex;
 }
+
+.section {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.section_header {
+  margin: 40px;
+}
+
+.editor {
+  flex: 1 1 auto;
+}

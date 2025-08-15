@@ -23,13 +23,11 @@ import {
 } from './editor.page.presets';
 
 const selectors = createLinksEditorSelectors((s: RootState) => s.linksEditor);
-// const actions = linksEditorActions;
 
 const { tabs, button } = editorNavigationPreset;
 
 const EditorPage: FC = () => {
   const location = useLocation()
-  // const dispatch = useAppDispatch();
   const links = useAppSelector(selectors.selectAll);
 
   const tabItems = useMemo(() => {
