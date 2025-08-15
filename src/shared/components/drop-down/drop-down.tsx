@@ -72,8 +72,9 @@ const DropDown = <T extends string>(props: IDropDownProps<T>) => {
             if (listRef.current) {
               listRef.current.style.maxHeight = `${availableHeight}px`;
             }
+            
+            Object.assign(elements.floating.style, { width: `${rects.reference.width}px` });
           });
-          Object.assign(elements.floating.style, { width: `${rects.reference.width}px` });
         },
       }),
       hide({ strategy: 'referenceHidden' }),
