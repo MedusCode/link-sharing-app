@@ -38,7 +38,7 @@ const CardSocialLinks: FC<ICardSocialLinksProps> = ({
       })}
 
       {Array.from({ length: Math.max(0, 5 - links.length) }).map((_, idx) => (
-        <li className={styles.list_element} key={`placeholder-${idx}`}>
+        <li className={styles.list_element} key={`pc-${idx}`}>
           <Placeholder className={styles.link_placeholder} />
         </li>
       ))}

@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { FC, HTMLAttributes } from 'react';
 
 import styles from '@features/demo/components/card-profile/card-profile.module.css';
+import cardProfilePreset from '@features/demo/components/card-profile/card-profile.preset';
 import Placeholder from '@shared/components/placeholder/placeholder';
 import { IProfile } from '@shared/types/profile.types';
 
@@ -10,6 +11,8 @@ interface ICardProfileProps {
   profile: IProfile;
   className?: HTMLAttributes<HTMLElement>['className'];
 }
+
+const { imgAlt } = cardProfilePreset;
 
 const CardProfile: FC<ICardProfileProps> = ({
   profile,
@@ -20,7 +23,7 @@ const CardProfile: FC<ICardProfileProps> = ({
   return (
     <div className={clsx(styles.container, className)}>
       {img
-        ? <img className={styles.image} src={img ? img : undefined} alt={'Profile Image Preview'} draggable={false} />
+        ? <img className={styles.image} src={img ? img : undefined} alt={imgAlt} draggable={false} />
         : <Placeholder className={styles.image_placeholder} />
       }
       {firstName || lastName

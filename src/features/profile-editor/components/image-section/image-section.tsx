@@ -4,12 +4,15 @@ import ImageInput from '@shared/components/image-input/image-input';
 import { TProfileImg } from '@shared/types/profile.types';
 
 import styles from './image-section.module.css';
+import imageSectionPreset from '@features/profile-editor/components/image-section/image-section.preset';
 
 interface IImageSectionProps {
   img: TProfileImg,
   updateImage: (img: TProfileImg) => void,
   className?: HTMLAttributes<HTMLElement>['className'];
 }
+
+const { label, firstHint, secondHint } = imageSectionPreset;
 
 const ImageSection: FC<IImageSectionProps> = ({
   img,
@@ -20,7 +23,7 @@ const ImageSection: FC<IImageSectionProps> = ({
 
   return (
     <div className={className}>
-      <label className={styles.label} htmlFor={id}>Profile picture</label>
+      <label className={styles.label} htmlFor={id}>{label}</label>
       <div className={styles.image_wrapper}>
         <ImageInput
           className={styles.image_input}
@@ -28,9 +31,9 @@ const ImageSection: FC<IImageSectionProps> = ({
           id={id}
           onChange={({ previewUrl }) => updateImage(previewUrl)} />
         <span className={styles.image_hints}>
-          {'Image must be below 1024x1024px.'}
+          {firstHint}
           <br />
-          {'Use PNG or JPG format.'}
+          {secondHint}
         </span>
       </div>
     </div>

@@ -1,5 +1,7 @@
 import { FC, HTMLAttributes, useEffect, useId } from 'react';
 
+import textInputsSectionPreset
+  from '@features/profile-editor/components/text-inputs-section/text-inputs-section.preset';
 import TextInput from '@shared/components/text-input/text-input';
 import { InputHints } from '@shared/config/forms.constants';
 import useTextInputs from '@shared/hooks/use-text-inputs';
@@ -23,6 +25,8 @@ const hintsConfig: ITextInputHintsConfig = {
     onChange: true,
   }
 }
+
+const { firstName: firstNamePreset, lastName: lastNamePreset, email: emailPreset } = textInputsSectionPreset;
 
 const TextInputsSection: FC<ITextInputsSectionProps> = ({
   fields,
@@ -65,30 +69,33 @@ const TextInputsSection: FC<ITextInputsSectionProps> = ({
 
   return (
     <div className={className}>
-      <label className={styles.label} htmlFor={`${id}-first-name`}>First name*</label>
+      <label className={styles.label} htmlFor={`${id}-first-name`}>{firstNamePreset.label}</label>
       <TextInput
         value={values.firstName}
         name={'first-name'}
         id={`${id}-first-name`}
-        placeholder={'e.g. John'}
+        placeholder={firstNamePreset.placeholder}
+        type={firstNamePreset.type}
         errorMessage={hints.firstName || undefined}
         onChange={onChange.firstName}
       />
-      <label className={styles.label} htmlFor={`${id}-last-name`}>Last name*</label>
+      <label className={styles.label} htmlFor={`${id}-last-name`}>{lastNamePreset.label}</label>
       <TextInput
         value={values.lastName}
         name={'last-name'}
         id={`${id}-last-name`}
-        placeholder={'e.g. Appleseed'}
+        placeholder={lastNamePreset.placeholder}
+        type={lastNamePreset.type}
         errorMessage={hints.lastName || undefined}
         onChange={onChange.lastName}
       />
-      <label className={styles.label} htmlFor={`${id}-email`}>Email</label>
+      <label className={styles.label} htmlFor={`${id}-email`}>{emailPreset.label}</label>
       <TextInput
         value={values.email}
         name={'email'}
         id={`${id}-email`}
-        placeholder={'e.g. email@example.com'}
+        placeholder={emailPreset.placeholder}
+        type={emailPreset.type}
         errorMessage={hints.email || undefined}
         onChange={onChange.email}
       />

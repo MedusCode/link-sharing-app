@@ -7,12 +7,15 @@ import Button from '@shared/components/button/button';
 import { IProfile, TProfileDetails, TProfileImg } from '@shared/types/profile.types';
 
 import styles from './profile-editor.module.css';
+import profileEditorPreset from '@features/profile-editor/profile-editor.preset';
 
 interface IProfileEditorProps {
   className?: HTMLAttributes<HTMLElement>['className'];
   profile: IProfile;
   patchProfile: (updatedFields: Partial<IProfile>) => void;
 }
+
+const { saveButton } = profileEditorPreset;
 
 const ProfileEditor: FC<IProfileEditorProps> = ({
   className = '',
@@ -34,7 +37,7 @@ const ProfileEditor: FC<IProfileEditorProps> = ({
         <TextInputsSection className={styles.input_section} fields={profileDetails} patchDetails={patchDetails} />
       </div>
       <div className={styles.footer}>
-        <Button className={styles.save_button} type={'submit'}>Save</Button>
+        <Button className={styles.save_button} type={'submit'}>{saveButton.text}</Button>
       </div>
     </form>
   );
