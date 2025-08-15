@@ -3,11 +3,11 @@ import { FC, HTMLAttributes } from 'react';
 
 import ImageSection from '@features/profile-editor/components/image-section/image-section';
 import TextInputsSection from '@features/profile-editor/components/text-inputs-section/text-inputs-section';
+import profileEditorPreset from '@features/profile-editor/profile-editor.preset';
 import Button from '@shared/components/button/button';
 import { IProfile, TProfileDetails, TProfileImg } from '@shared/types/profile.types';
 
 import styles from './profile-editor.module.css';
-import profileEditorPreset from '@features/profile-editor/profile-editor.preset';
 
 interface IProfileEditorProps {
   className?: HTMLAttributes<HTMLElement>['className'];

@@ -55,5 +55,13 @@ module.exports = {
       pathGroupsExcludedImportTypes: ['builtin'],
       alphabetize: { order: 'asc', caseInsensitive: true },
     }],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+      },
+    ],
   },
 };

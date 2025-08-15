@@ -7,8 +7,21 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+async function enableMSW() {
+  const { worker } = await import('./mocks/browser');
+
+  await worker.start({
+    serviceWorker: {
+      url: `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
+    },
+    onUnhandledRequest: 'bypass',
+  });
+}
+
+enableMSW().then(() => {
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  )
+});

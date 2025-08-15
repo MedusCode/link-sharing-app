@@ -1,10 +1,10 @@
 import { FC, HTMLAttributes, useId } from 'react';
 
+import imageSectionPreset from '@features/profile-editor/components/image-section/image-section.preset';
 import ImageInput from '@shared/components/image-input/image-input';
 import { TProfileImg } from '@shared/types/profile.types';
 
 import styles from './image-section.module.css';
-import imageSectionPreset from '@features/profile-editor/components/image-section/image-section.preset';
 
 interface IImageSectionProps {
   img: TProfileImg,
