@@ -1,0 +1,12 @@
+.list {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 40px;
+  margin: 0;
+}
+
+.list_element:last-child {
+  margin-bottom: 10px;
+}

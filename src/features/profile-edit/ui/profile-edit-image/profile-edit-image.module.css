@@ -1,0 +1,22 @@
+.image_wrapper {
+  display: flex;
+  gap: 24px;
+  justify-content: left;
+  align-items: center;
+}
+
+.image_input {
+  flex: 0 0 auto;
+}
+
+.label {
+  composes: body_medium_text from '@shared/styles/index.css';
+  align-self: center;
+  color: var(--secondary-text-color, #737373);
+  cursor: pointer;
+}
+
+.image_hints {
+  composes: body_small_text from '@shared/styles/index.css';
+  color: var(--secondary-text-color, #737373);
+}

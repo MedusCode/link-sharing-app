@@ -1,0 +1,6 @@
+.label {
+  composes: body_medium_text from '@shared/styles/index.css';
+  align-self: center;
+  color: var(--secondary-text-color, #737373);
+  cursor: pointer;
+}
