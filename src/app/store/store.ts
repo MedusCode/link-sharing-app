@@ -1,10 +1,19 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
-import { rootReducer } from '@app/store/root-reducer';
+import { linksEditReducer } from '@features/links-edit';
+import { profileEditReducer } from '@features/profile-edit';
 
-export const store = configureStore({
+
+export const rootReducer = combineReducers({
+  linksEdit: linksEditReducer,
+  profileEdit: profileEditReducer,
+});
+
+const store = configureStore({
   reducer: rootReducer,
 });
 
 setupListeners(store.dispatch);
+
+export default store;

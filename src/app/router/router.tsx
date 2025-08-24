@@ -1,20 +1,21 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { AuthLayout } from 'widgets/auth-layout';
+import { EditorLayout } from 'widgets/editor-layout';
+import { RootLayout } from 'widgets/root-layout';
 
-import { Paths } from '@app/router/paths';
-import AuthPage from '@pages/auth/auth.page';
-import LoginPage from '@pages/auth/login/login.page';
-import SignupPage from '@pages/auth/signup/signup.page';
-import EditorPage from '@pages/editor/editor.page';
-import LinksPage from '@pages/editor/links/links.page';
-import ProfilePage from '@pages/editor/profile/profile.page';
-import RootPage from '@pages/root/root.page';
+import { LinksPage } from '@pages/links';
+import { LoginPage } from '@pages/login';
+import { ProfilePage } from '@pages/profile';
+import { SignupPage } from '@pages/signup/signup-page';
+import { Paths } from '@shared/router';
+
 
 const router = createBrowserRouter([
   {
-    element: <RootPage />,
+    element: <RootLayout />,
     children: [
       {
-        element: <EditorPage />,
+        element: <EditorLayout />,
         children: [
           {
             path: Paths.EDITOR.LINKS,
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        element: <AuthPage />,
+        element: <AuthLayout />,
         children: [
           {
             path: Paths.AUTH.LOGIN,
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
         ],
       },
     ]
-  }
+  },
 ]);
 
 export default router;

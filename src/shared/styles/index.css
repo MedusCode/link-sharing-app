@@ -1,0 +1,47 @@
+.heading_medium_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.heading_small_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.body_medium_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.body_small_text {
+  color: var(--primary-text-color, #333333);
+  font-family: var(--font-family, "Instrument Sans"), serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.section_container {
+  width: 100%;
+  background-color: var(--primary-bg-color, #FFFFFF);
+  border-radius: var(--container-border-radius, 12px);
+  padding: 40px;
+}
+
+.hide_element {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  opacity: 0;
+}

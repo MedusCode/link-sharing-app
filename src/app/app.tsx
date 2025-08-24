@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import 'normalize.css'
+import './styles/index.css'
+import { FC } from 'react';
 
-import 'normalize.css';
-import './app.css'
-import RouterProvider from '@app/providers/router-provider';
-import StoreProvider from '@app/providers/store-provider';
+import { RouterProvider } from './router';
+import { StoreProvider } from './store';
+
 
 const App: FC = () => {
 
